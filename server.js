@@ -1,7 +1,8 @@
 import dotenv from 'dotenv';
 import express from 'express';
 import session from 'express-session';
-import authRoutes from './Routes/authRoutes.js';
+import authRoutes from './routes/authRoutes.js';
+import errorHandler from './middleware/errorHandler.js'
 
 
 dotenv.config();
@@ -24,6 +25,7 @@ app.use(session({
 // Auth routes
 app.use('/api/auth', authRoutes);
 
+app.use(errorHandler);
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
