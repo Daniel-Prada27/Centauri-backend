@@ -1,0 +1,87 @@
+import bcrypt from 'bcrypt';
+import { prisma } from '../prisma.js';
+import { AppError }from '../errors/appError.js';
+
+export const login = async (data) => {
+    const { correo, clave } = data;
+
+    if (!correo || !clave) {
+        throw new AppError('Correo y clave son obligatorios', 400);
+    }
+
+    // Buscar usuario por correo
+    const usuarioEncontrado = await prisma.usuarios.findFirst({
+        where: { correo }
+    });
+
+    if (!usuarioEncontrado) {
+        throw new AppError('Credenciales inválidas', 401);
+    }
+
+    // Verificar clave
+    const claveValida = await bcrypt.compare(clave, usuarioEncontrado.clave);
+
+    if (!claveValida) {
+        throw new AppError('Credenciales inválidas', 401);
+    }
+
+    let user =  {
+        id: usuarioEncontrado.id,
+        usuario: usuarioEncontrado.usuario,
+        correo: usuarioEncontrado.correo
+    };
+
+    return user;
+};
+
+
+export const registro = async (data) => {
+    const { usuario, clave, correo, cedula, nombre, direccion } = data;
+
+    // Validación básica
+    if (!usuario || !clave || !correo) {
+        throw new AppError('Usuario, correo y clave son obligatorios', 400);
+    }
+
+    // Verificar si el usuario ya existe
+    const usuarioExiste = await prisma.usuarios.findFirst({
+        where: { correo }
+    });
+
+    if (usuarioExiste) {
+        throw new AppError('Ya existe una cuenta con este correo', 400);
+    }
+
+    // Encriptar clave
+    const claveEncriptada = await bcrypt.hash(clave, 10);
+
+    // Transacción
+    const resultado = await prisma.$transaction(async (tx) => {
+        const nuevoUsuario = await tx.usuarios.create({
+            data: {
+                id: crypto.randomUUID(),
+                usuario,
+                clave: claveEncriptada,
+                correo
+            }
+        });
+
+        const nuevoCliente = await tx.clientes.create({
+            data: {
+                id: crypto.randomUUID(),
+                id_usuario: nuevoUsuario.id,
+                cedula,
+                nombre,
+                direccion,
+                activo: true
+            }
+        });
+
+        return { nuevoUsuario, nuevoCliente };
+    });
+
+    return {
+        mensaje: 'Usuario registrado exitosamente',
+        data: resultado
+    };
+};
