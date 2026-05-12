@@ -1,8 +1,11 @@
 import {Router} from 'express';
 import {body} from 'express-validator';
 import { createProduct } from '../controllers/productsController.js';
+import { requireLogin } from '../middleware/validateSession.js';
 
 const productsRoutes = Router();
+
+productsRoutes.use(requireLogin);
 
 productsRoutes.post('/createProduct', [
     body('nombre').notEmpty().withMessage('El nombre es obligatorio'),
