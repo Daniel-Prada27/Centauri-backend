@@ -2,6 +2,7 @@ import dotenv from 'dotenv';
 import express from 'express';
 import session from 'express-session';
 import authRoutes from './routes/authRoutes.js';
+import productsRoutes from './routes/productsRoutes.js';
 import errorHandler from './middleware/errorHandler.js'
 
 
@@ -24,6 +25,8 @@ app.use(session({
 
 // Auth routes
 app.use('/api/auth', authRoutes);
+//Products routes
+app.use('/api/products', productsRoutes);
 
 app.use(errorHandler);
 
