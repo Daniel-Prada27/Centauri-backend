@@ -1,11 +1,13 @@
-import dotenv from 'dotenv';
+import 'dotenv/config';
 import express from 'express';
 import session from 'express-session';
 import authRoutes from './routes/authRoutes.js';
+import productsRoutes from './routes/productsRoutes.js';
+import authorsRoutes from './routes/authorsRoutes.js';
+import editorialRoutes from './routes/editorialRoutes.js';
+import categoryRoutes from './routes/categoryRoutes.js';
 import errorHandler from './middleware/errorHandler.js'
 
-
-dotenv.config();
 const app = express()
 const port = 3000
 
@@ -24,6 +26,14 @@ app.use(session({
 
 // Auth routes
 app.use('/api/auth', authRoutes);
+//Products routes
+app.use('/api/products', productsRoutes);
+//Author routes
+app.use('/api/authors', authorsRoutes);
+//Editorial routes
+app.use('/api/editorials', editorialRoutes);
+//Category routes
+app.use('/api/categories', categoryRoutes);
 
 app.use(errorHandler);
 
