@@ -8,7 +8,8 @@ export const createProduct = async (data) => {
         fecha_publicacion,
         id_tipo,
         id_autor,
-        id_editorial,id_categoria
+        id_editorial,
+        id_categoria
     } = data;
 
     if (!nombre || existencias === undefined || !fecha_publicacion || !id_tipo || !id_autor || !id_editorial || !id_categoria) {
