@@ -81,6 +81,12 @@ export const readProduct = async ({ nombre, autor, editorial, tipo, categoria })
             nombre:
                 { contains: nombre, mode: 'insensitive' }
         }),
+        ...(autor && {
+            autor: {
+                is:
+                    { nombre: { contains: autor, mode: 'insensitive' } }
+            }
+        }),
         ...(editorial && {
             editorial: {
                 is:
