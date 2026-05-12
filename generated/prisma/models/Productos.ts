@@ -37,6 +37,7 @@ export type ProductosSumAggregateOutputType = {
 export type ProductosMinAggregateOutputType = {
   id: string | null
   nombre: string | null
+  imagen: string | null
   existencias: number | null
   fecha_publicacion: Date | null
   id_tipo: string | null
@@ -48,6 +49,7 @@ export type ProductosMinAggregateOutputType = {
 export type ProductosMaxAggregateOutputType = {
   id: string | null
   nombre: string | null
+  imagen: string | null
   existencias: number | null
   fecha_publicacion: Date | null
   id_tipo: string | null
@@ -59,6 +61,7 @@ export type ProductosMaxAggregateOutputType = {
 export type ProductosCountAggregateOutputType = {
   id: number
   nombre: number
+  imagen: number
   existencias: number
   fecha_publicacion: number
   id_tipo: number
@@ -80,6 +83,7 @@ export type ProductosSumAggregateInputType = {
 export type ProductosMinAggregateInputType = {
   id?: true
   nombre?: true
+  imagen?: true
   existencias?: true
   fecha_publicacion?: true
   id_tipo?: true
@@ -91,6 +95,7 @@ export type ProductosMinAggregateInputType = {
 export type ProductosMaxAggregateInputType = {
   id?: true
   nombre?: true
+  imagen?: true
   existencias?: true
   fecha_publicacion?: true
   id_tipo?: true
@@ -102,6 +107,7 @@ export type ProductosMaxAggregateInputType = {
 export type ProductosCountAggregateInputType = {
   id?: true
   nombre?: true
+  imagen?: true
   existencias?: true
   fecha_publicacion?: true
   id_tipo?: true
@@ -200,6 +206,7 @@ export type ProductosGroupByArgs<ExtArgs extends runtime.Types.Extensions.Intern
 export type ProductosGroupByOutputType = {
   id: string
   nombre: string
+  imagen: string
   existencias: number
   fecha_publicacion: Date
   id_tipo: string
@@ -234,6 +241,7 @@ export type ProductosWhereInput = {
   NOT?: Prisma.ProductosWhereInput | Prisma.ProductosWhereInput[]
   id?: Prisma.UuidFilter<"Productos"> | string
   nombre?: Prisma.StringFilter<"Productos"> | string
+  imagen?: Prisma.StringFilter<"Productos"> | string
   existencias?: Prisma.IntFilter<"Productos"> | number
   fecha_publicacion?: Prisma.DateTimeFilter<"Productos"> | Date | string
   id_tipo?: Prisma.UuidFilter<"Productos"> | string
@@ -251,6 +259,7 @@ export type ProductosWhereInput = {
 export type ProductosOrderByWithRelationInput = {
   id?: Prisma.SortOrder
   nombre?: Prisma.SortOrder
+  imagen?: Prisma.SortOrder
   existencias?: Prisma.SortOrder
   fecha_publicacion?: Prisma.SortOrder
   id_tipo?: Prisma.SortOrder
@@ -271,6 +280,7 @@ export type ProductosWhereUniqueInput = Prisma.AtLeast<{
   OR?: Prisma.ProductosWhereInput[]
   NOT?: Prisma.ProductosWhereInput | Prisma.ProductosWhereInput[]
   nombre?: Prisma.StringFilter<"Productos"> | string
+  imagen?: Prisma.StringFilter<"Productos"> | string
   existencias?: Prisma.IntFilter<"Productos"> | number
   fecha_publicacion?: Prisma.DateTimeFilter<"Productos"> | Date | string
   id_tipo?: Prisma.UuidFilter<"Productos"> | string
@@ -288,6 +298,7 @@ export type ProductosWhereUniqueInput = Prisma.AtLeast<{
 export type ProductosOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
   nombre?: Prisma.SortOrder
+  imagen?: Prisma.SortOrder
   existencias?: Prisma.SortOrder
   fecha_publicacion?: Prisma.SortOrder
   id_tipo?: Prisma.SortOrder
@@ -307,6 +318,7 @@ export type ProductosScalarWhereWithAggregatesInput = {
   NOT?: Prisma.ProductosScalarWhereWithAggregatesInput | Prisma.ProductosScalarWhereWithAggregatesInput[]
   id?: Prisma.UuidWithAggregatesFilter<"Productos"> | string
   nombre?: Prisma.StringWithAggregatesFilter<"Productos"> | string
+  imagen?: Prisma.StringWithAggregatesFilter<"Productos"> | string
   existencias?: Prisma.IntWithAggregatesFilter<"Productos"> | number
   fecha_publicacion?: Prisma.DateTimeWithAggregatesFilter<"Productos"> | Date | string
   id_tipo?: Prisma.UuidWithAggregatesFilter<"Productos"> | string
@@ -318,6 +330,7 @@ export type ProductosScalarWhereWithAggregatesInput = {
 export type ProductosCreateInput = {
   id?: string
   nombre: string
+  imagen: string
   existencias: number
   fecha_publicacion: Date | string
   tipo: Prisma.TiposCreateNestedOneWithoutProductosInput
@@ -331,6 +344,7 @@ export type ProductosCreateInput = {
 export type ProductosUncheckedCreateInput = {
   id?: string
   nombre: string
+  imagen: string
   existencias: number
   fecha_publicacion: Date | string
   id_tipo: string
@@ -344,6 +358,7 @@ export type ProductosUncheckedCreateInput = {
 export type ProductosUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   nombre?: Prisma.StringFieldUpdateOperationsInput | string
+  imagen?: Prisma.StringFieldUpdateOperationsInput | string
   existencias?: Prisma.IntFieldUpdateOperationsInput | number
   fecha_publicacion?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   tipo?: Prisma.TiposUpdateOneRequiredWithoutProductosNestedInput
@@ -357,6 +372,7 @@ export type ProductosUpdateInput = {
 export type ProductosUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   nombre?: Prisma.StringFieldUpdateOperationsInput | string
+  imagen?: Prisma.StringFieldUpdateOperationsInput | string
   existencias?: Prisma.IntFieldUpdateOperationsInput | number
   fecha_publicacion?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   id_tipo?: Prisma.StringFieldUpdateOperationsInput | string
@@ -370,6 +386,7 @@ export type ProductosUncheckedUpdateInput = {
 export type ProductosCreateManyInput = {
   id?: string
   nombre: string
+  imagen: string
   existencias: number
   fecha_publicacion: Date | string
   id_tipo: string
@@ -381,6 +398,7 @@ export type ProductosCreateManyInput = {
 export type ProductosUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   nombre?: Prisma.StringFieldUpdateOperationsInput | string
+  imagen?: Prisma.StringFieldUpdateOperationsInput | string
   existencias?: Prisma.IntFieldUpdateOperationsInput | number
   fecha_publicacion?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -388,6 +406,7 @@ export type ProductosUpdateManyMutationInput = {
 export type ProductosUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   nombre?: Prisma.StringFieldUpdateOperationsInput | string
+  imagen?: Prisma.StringFieldUpdateOperationsInput | string
   existencias?: Prisma.IntFieldUpdateOperationsInput | number
   fecha_publicacion?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   id_tipo?: Prisma.StringFieldUpdateOperationsInput | string
@@ -409,6 +428,7 @@ export type ProductosOrderByRelationAggregateInput = {
 export type ProductosCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
   nombre?: Prisma.SortOrder
+  imagen?: Prisma.SortOrder
   existencias?: Prisma.SortOrder
   fecha_publicacion?: Prisma.SortOrder
   id_tipo?: Prisma.SortOrder
@@ -424,6 +444,7 @@ export type ProductosAvgOrderByAggregateInput = {
 export type ProductosMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
   nombre?: Prisma.SortOrder
+  imagen?: Prisma.SortOrder
   existencias?: Prisma.SortOrder
   fecha_publicacion?: Prisma.SortOrder
   id_tipo?: Prisma.SortOrder
@@ -435,6 +456,7 @@ export type ProductosMaxOrderByAggregateInput = {
 export type ProductosMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
   nombre?: Prisma.SortOrder
+  imagen?: Prisma.SortOrder
   existencias?: Prisma.SortOrder
   fecha_publicacion?: Prisma.SortOrder
   id_tipo?: Prisma.SortOrder
@@ -663,6 +685,7 @@ export type ProductosUpdateOneRequiredWithoutCarritoNestedInput = {
 export type ProductosCreateWithoutCategoriaInput = {
   id?: string
   nombre: string
+  imagen: string
   existencias: number
   fecha_publicacion: Date | string
   tipo: Prisma.TiposCreateNestedOneWithoutProductosInput
@@ -675,6 +698,7 @@ export type ProductosCreateWithoutCategoriaInput = {
 export type ProductosUncheckedCreateWithoutCategoriaInput = {
   id?: string
   nombre: string
+  imagen: string
   existencias: number
   fecha_publicacion: Date | string
   id_tipo: string
@@ -716,6 +740,7 @@ export type ProductosScalarWhereInput = {
   NOT?: Prisma.ProductosScalarWhereInput | Prisma.ProductosScalarWhereInput[]
   id?: Prisma.UuidFilter<"Productos"> | string
   nombre?: Prisma.StringFilter<"Productos"> | string
+  imagen?: Prisma.StringFilter<"Productos"> | string
   existencias?: Prisma.IntFilter<"Productos"> | number
   fecha_publicacion?: Prisma.DateTimeFilter<"Productos"> | Date | string
   id_tipo?: Prisma.UuidFilter<"Productos"> | string
@@ -727,6 +752,7 @@ export type ProductosScalarWhereInput = {
 export type ProductosCreateWithoutAutorInput = {
   id?: string
   nombre: string
+  imagen: string
   existencias: number
   fecha_publicacion: Date | string
   tipo: Prisma.TiposCreateNestedOneWithoutProductosInput
@@ -739,6 +765,7 @@ export type ProductosCreateWithoutAutorInput = {
 export type ProductosUncheckedCreateWithoutAutorInput = {
   id?: string
   nombre: string
+  imagen: string
   existencias: number
   fecha_publicacion: Date | string
   id_tipo: string
@@ -777,6 +804,7 @@ export type ProductosUpdateManyWithWhereWithoutAutorInput = {
 export type ProductosCreateWithoutEditorialInput = {
   id?: string
   nombre: string
+  imagen: string
   existencias: number
   fecha_publicacion: Date | string
   tipo: Prisma.TiposCreateNestedOneWithoutProductosInput
@@ -789,6 +817,7 @@ export type ProductosCreateWithoutEditorialInput = {
 export type ProductosUncheckedCreateWithoutEditorialInput = {
   id?: string
   nombre: string
+  imagen: string
   existencias: number
   fecha_publicacion: Date | string
   id_tipo: string
@@ -827,6 +856,7 @@ export type ProductosUpdateManyWithWhereWithoutEditorialInput = {
 export type ProductosCreateWithoutTipoInput = {
   id?: string
   nombre: string
+  imagen: string
   existencias: number
   fecha_publicacion: Date | string
   autor: Prisma.AutoresCreateNestedOneWithoutProductosInput
@@ -839,6 +869,7 @@ export type ProductosCreateWithoutTipoInput = {
 export type ProductosUncheckedCreateWithoutTipoInput = {
   id?: string
   nombre: string
+  imagen: string
   existencias: number
   fecha_publicacion: Date | string
   id_autor: string
@@ -877,6 +908,7 @@ export type ProductosUpdateManyWithWhereWithoutTipoInput = {
 export type ProductosCreateWithoutDetallesPedidoInput = {
   id?: string
   nombre: string
+  imagen: string
   existencias: number
   fecha_publicacion: Date | string
   tipo: Prisma.TiposCreateNestedOneWithoutProductosInput
@@ -889,6 +921,7 @@ export type ProductosCreateWithoutDetallesPedidoInput = {
 export type ProductosUncheckedCreateWithoutDetallesPedidoInput = {
   id?: string
   nombre: string
+  imagen: string
   existencias: number
   fecha_publicacion: Date | string
   id_tipo: string
@@ -917,6 +950,7 @@ export type ProductosUpdateToOneWithWhereWithoutDetallesPedidoInput = {
 export type ProductosUpdateWithoutDetallesPedidoInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   nombre?: Prisma.StringFieldUpdateOperationsInput | string
+  imagen?: Prisma.StringFieldUpdateOperationsInput | string
   existencias?: Prisma.IntFieldUpdateOperationsInput | number
   fecha_publicacion?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   tipo?: Prisma.TiposUpdateOneRequiredWithoutProductosNestedInput
@@ -929,6 +963,7 @@ export type ProductosUpdateWithoutDetallesPedidoInput = {
 export type ProductosUncheckedUpdateWithoutDetallesPedidoInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   nombre?: Prisma.StringFieldUpdateOperationsInput | string
+  imagen?: Prisma.StringFieldUpdateOperationsInput | string
   existencias?: Prisma.IntFieldUpdateOperationsInput | number
   fecha_publicacion?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   id_tipo?: Prisma.StringFieldUpdateOperationsInput | string
@@ -941,6 +976,7 @@ export type ProductosUncheckedUpdateWithoutDetallesPedidoInput = {
 export type ProductosCreateWithoutCarritoInput = {
   id?: string
   nombre: string
+  imagen: string
   existencias: number
   fecha_publicacion: Date | string
   tipo: Prisma.TiposCreateNestedOneWithoutProductosInput
@@ -953,6 +989,7 @@ export type ProductosCreateWithoutCarritoInput = {
 export type ProductosUncheckedCreateWithoutCarritoInput = {
   id?: string
   nombre: string
+  imagen: string
   existencias: number
   fecha_publicacion: Date | string
   id_tipo: string
@@ -981,6 +1018,7 @@ export type ProductosUpdateToOneWithWhereWithoutCarritoInput = {
 export type ProductosUpdateWithoutCarritoInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   nombre?: Prisma.StringFieldUpdateOperationsInput | string
+  imagen?: Prisma.StringFieldUpdateOperationsInput | string
   existencias?: Prisma.IntFieldUpdateOperationsInput | number
   fecha_publicacion?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   tipo?: Prisma.TiposUpdateOneRequiredWithoutProductosNestedInput
@@ -993,6 +1031,7 @@ export type ProductosUpdateWithoutCarritoInput = {
 export type ProductosUncheckedUpdateWithoutCarritoInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   nombre?: Prisma.StringFieldUpdateOperationsInput | string
+  imagen?: Prisma.StringFieldUpdateOperationsInput | string
   existencias?: Prisma.IntFieldUpdateOperationsInput | number
   fecha_publicacion?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   id_tipo?: Prisma.StringFieldUpdateOperationsInput | string
@@ -1005,6 +1044,7 @@ export type ProductosUncheckedUpdateWithoutCarritoInput = {
 export type ProductosCreateManyCategoriaInput = {
   id?: string
   nombre: string
+  imagen: string
   existencias: number
   fecha_publicacion: Date | string
   id_tipo: string
@@ -1015,6 +1055,7 @@ export type ProductosCreateManyCategoriaInput = {
 export type ProductosUpdateWithoutCategoriaInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   nombre?: Prisma.StringFieldUpdateOperationsInput | string
+  imagen?: Prisma.StringFieldUpdateOperationsInput | string
   existencias?: Prisma.IntFieldUpdateOperationsInput | number
   fecha_publicacion?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   tipo?: Prisma.TiposUpdateOneRequiredWithoutProductosNestedInput
@@ -1027,6 +1068,7 @@ export type ProductosUpdateWithoutCategoriaInput = {
 export type ProductosUncheckedUpdateWithoutCategoriaInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   nombre?: Prisma.StringFieldUpdateOperationsInput | string
+  imagen?: Prisma.StringFieldUpdateOperationsInput | string
   existencias?: Prisma.IntFieldUpdateOperationsInput | number
   fecha_publicacion?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   id_tipo?: Prisma.StringFieldUpdateOperationsInput | string
@@ -1039,6 +1081,7 @@ export type ProductosUncheckedUpdateWithoutCategoriaInput = {
 export type ProductosUncheckedUpdateManyWithoutCategoriaInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   nombre?: Prisma.StringFieldUpdateOperationsInput | string
+  imagen?: Prisma.StringFieldUpdateOperationsInput | string
   existencias?: Prisma.IntFieldUpdateOperationsInput | number
   fecha_publicacion?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   id_tipo?: Prisma.StringFieldUpdateOperationsInput | string
@@ -1049,6 +1092,7 @@ export type ProductosUncheckedUpdateManyWithoutCategoriaInput = {
 export type ProductosCreateManyAutorInput = {
   id?: string
   nombre: string
+  imagen: string
   existencias: number
   fecha_publicacion: Date | string
   id_tipo: string
@@ -1059,6 +1103,7 @@ export type ProductosCreateManyAutorInput = {
 export type ProductosUpdateWithoutAutorInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   nombre?: Prisma.StringFieldUpdateOperationsInput | string
+  imagen?: Prisma.StringFieldUpdateOperationsInput | string
   existencias?: Prisma.IntFieldUpdateOperationsInput | number
   fecha_publicacion?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   tipo?: Prisma.TiposUpdateOneRequiredWithoutProductosNestedInput
@@ -1071,6 +1116,7 @@ export type ProductosUpdateWithoutAutorInput = {
 export type ProductosUncheckedUpdateWithoutAutorInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   nombre?: Prisma.StringFieldUpdateOperationsInput | string
+  imagen?: Prisma.StringFieldUpdateOperationsInput | string
   existencias?: Prisma.IntFieldUpdateOperationsInput | number
   fecha_publicacion?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   id_tipo?: Prisma.StringFieldUpdateOperationsInput | string
@@ -1083,6 +1129,7 @@ export type ProductosUncheckedUpdateWithoutAutorInput = {
 export type ProductosUncheckedUpdateManyWithoutAutorInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   nombre?: Prisma.StringFieldUpdateOperationsInput | string
+  imagen?: Prisma.StringFieldUpdateOperationsInput | string
   existencias?: Prisma.IntFieldUpdateOperationsInput | number
   fecha_publicacion?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   id_tipo?: Prisma.StringFieldUpdateOperationsInput | string
@@ -1093,6 +1140,7 @@ export type ProductosUncheckedUpdateManyWithoutAutorInput = {
 export type ProductosCreateManyEditorialInput = {
   id?: string
   nombre: string
+  imagen: string
   existencias: number
   fecha_publicacion: Date | string
   id_tipo: string
@@ -1103,6 +1151,7 @@ export type ProductosCreateManyEditorialInput = {
 export type ProductosUpdateWithoutEditorialInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   nombre?: Prisma.StringFieldUpdateOperationsInput | string
+  imagen?: Prisma.StringFieldUpdateOperationsInput | string
   existencias?: Prisma.IntFieldUpdateOperationsInput | number
   fecha_publicacion?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   tipo?: Prisma.TiposUpdateOneRequiredWithoutProductosNestedInput
@@ -1115,6 +1164,7 @@ export type ProductosUpdateWithoutEditorialInput = {
 export type ProductosUncheckedUpdateWithoutEditorialInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   nombre?: Prisma.StringFieldUpdateOperationsInput | string
+  imagen?: Prisma.StringFieldUpdateOperationsInput | string
   existencias?: Prisma.IntFieldUpdateOperationsInput | number
   fecha_publicacion?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   id_tipo?: Prisma.StringFieldUpdateOperationsInput | string
@@ -1127,6 +1177,7 @@ export type ProductosUncheckedUpdateWithoutEditorialInput = {
 export type ProductosUncheckedUpdateManyWithoutEditorialInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   nombre?: Prisma.StringFieldUpdateOperationsInput | string
+  imagen?: Prisma.StringFieldUpdateOperationsInput | string
   existencias?: Prisma.IntFieldUpdateOperationsInput | number
   fecha_publicacion?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   id_tipo?: Prisma.StringFieldUpdateOperationsInput | string
@@ -1137,6 +1188,7 @@ export type ProductosUncheckedUpdateManyWithoutEditorialInput = {
 export type ProductosCreateManyTipoInput = {
   id?: string
   nombre: string
+  imagen: string
   existencias: number
   fecha_publicacion: Date | string
   id_autor: string
@@ -1147,6 +1199,7 @@ export type ProductosCreateManyTipoInput = {
 export type ProductosUpdateWithoutTipoInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   nombre?: Prisma.StringFieldUpdateOperationsInput | string
+  imagen?: Prisma.StringFieldUpdateOperationsInput | string
   existencias?: Prisma.IntFieldUpdateOperationsInput | number
   fecha_publicacion?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   autor?: Prisma.AutoresUpdateOneRequiredWithoutProductosNestedInput
@@ -1159,6 +1212,7 @@ export type ProductosUpdateWithoutTipoInput = {
 export type ProductosUncheckedUpdateWithoutTipoInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   nombre?: Prisma.StringFieldUpdateOperationsInput | string
+  imagen?: Prisma.StringFieldUpdateOperationsInput | string
   existencias?: Prisma.IntFieldUpdateOperationsInput | number
   fecha_publicacion?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   id_autor?: Prisma.StringFieldUpdateOperationsInput | string
@@ -1171,6 +1225,7 @@ export type ProductosUncheckedUpdateWithoutTipoInput = {
 export type ProductosUncheckedUpdateManyWithoutTipoInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   nombre?: Prisma.StringFieldUpdateOperationsInput | string
+  imagen?: Prisma.StringFieldUpdateOperationsInput | string
   existencias?: Prisma.IntFieldUpdateOperationsInput | number
   fecha_publicacion?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   id_autor?: Prisma.StringFieldUpdateOperationsInput | string
@@ -1221,6 +1276,7 @@ export type ProductosCountOutputTypeCountCarritoArgs<ExtArgs extends runtime.Typ
 export type ProductosSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   nombre?: boolean
+  imagen?: boolean
   existencias?: boolean
   fecha_publicacion?: boolean
   id_tipo?: boolean
@@ -1239,6 +1295,7 @@ export type ProductosSelect<ExtArgs extends runtime.Types.Extensions.InternalArg
 export type ProductosSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   nombre?: boolean
+  imagen?: boolean
   existencias?: boolean
   fecha_publicacion?: boolean
   id_tipo?: boolean
@@ -1254,6 +1311,7 @@ export type ProductosSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Ext
 export type ProductosSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   nombre?: boolean
+  imagen?: boolean
   existencias?: boolean
   fecha_publicacion?: boolean
   id_tipo?: boolean
@@ -1269,6 +1327,7 @@ export type ProductosSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Ext
 export type ProductosSelectScalar = {
   id?: boolean
   nombre?: boolean
+  imagen?: boolean
   existencias?: boolean
   fecha_publicacion?: boolean
   id_tipo?: boolean
@@ -1277,7 +1336,7 @@ export type ProductosSelectScalar = {
   id_categoria?: boolean
 }
 
-export type ProductosOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "nombre" | "existencias" | "fecha_publicacion" | "id_tipo" | "id_autor" | "id_editorial" | "id_categoria", ExtArgs["result"]["productos"]>
+export type ProductosOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "nombre" | "imagen" | "existencias" | "fecha_publicacion" | "id_tipo" | "id_autor" | "id_editorial" | "id_categoria", ExtArgs["result"]["productos"]>
 export type ProductosInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   tipo?: boolean | Prisma.TiposDefaultArgs<ExtArgs>
   autor?: boolean | Prisma.AutoresDefaultArgs<ExtArgs>
@@ -1313,6 +1372,7 @@ export type $ProductosPayload<ExtArgs extends runtime.Types.Extensions.InternalA
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
     nombre: string
+    imagen: string
     existencias: number
     fecha_publicacion: Date
     id_tipo: string
@@ -1750,6 +1810,7 @@ export interface Prisma__ProductosClient<T, Null = never, ExtArgs extends runtim
 export interface ProductosFieldRefs {
   readonly id: Prisma.FieldRef<"Productos", 'String'>
   readonly nombre: Prisma.FieldRef<"Productos", 'String'>
+  readonly imagen: Prisma.FieldRef<"Productos", 'String'>
   readonly existencias: Prisma.FieldRef<"Productos", 'Int'>
   readonly fecha_publicacion: Prisma.FieldRef<"Productos", 'DateTime'>
   readonly id_tipo: Prisma.FieldRef<"Productos", 'String'>

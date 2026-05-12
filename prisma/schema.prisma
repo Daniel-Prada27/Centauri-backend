@@ -40,7 +40,7 @@ model Tipos {
 model Productos {
   id                String      @id @default(uuid()) @db.Uuid
   nombre            String      @db.VarChar(100)
-  imagen            String      @db.VarChar(200)
+  imagen            String      @db.VarChar(200) @default("none")
   existencias       Int
   fecha_publicacion DateTime    @db.Date
 
