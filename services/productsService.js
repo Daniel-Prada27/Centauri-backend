@@ -76,7 +76,6 @@ export const createProduct = async (data) => {
 };
 
 export const readProduct = async ({ nombre, autor, editorial, tipo, categoria }) => {
-    console.log("SERVICE");
     const where = {
         ...(nombre && {
             nombre:
@@ -114,7 +113,6 @@ export const readProduct = async ({ nombre, autor, editorial, tipo, categoria })
         }
     });
 
-    console.log("QUERY");
 
     return products;
 }
