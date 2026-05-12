@@ -18,7 +18,7 @@ app.get('/', (req, res) => {
 app.use(express.json());
 
 app.use(session({
-  secret: process.env.SESSION_SECRET || 'centauri-dev-secret',
+  secret: process.env.SESSION_SECRET,
   resave: false,
   saveUninitialized: false,
   cookie: { secure: false }
