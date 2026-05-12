@@ -116,6 +116,7 @@ export type TiposScalarFieldEnum = (typeof TiposScalarFieldEnum)[keyof typeof Ti
 export const ProductosScalarFieldEnum = {
   id: 'id',
   nombre: 'nombre',
+  imagen: 'imagen',
   existencias: 'existencias',
   fecha_publicacion: 'fecha_publicacion',
   id_tipo: 'id_tipo',

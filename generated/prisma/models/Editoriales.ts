@@ -169,12 +169,12 @@ export type EditorialesOrderByWithRelationInput = {
 
 export type EditorialesWhereUniqueInput = Prisma.AtLeast<{
   id?: string
+  nombre?: string
   AND?: Prisma.EditorialesWhereInput | Prisma.EditorialesWhereInput[]
   OR?: Prisma.EditorialesWhereInput[]
   NOT?: Prisma.EditorialesWhereInput | Prisma.EditorialesWhereInput[]
-  nombre?: Prisma.StringFilter<"Editoriales"> | string
   productos?: Prisma.ProductosListRelationFilter
-}, "id">
+}, "id" | "nombre">
 
 export type EditorialesOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
