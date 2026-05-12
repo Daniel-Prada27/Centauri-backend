@@ -7,7 +7,7 @@ const authorsRoutes = Router();
 
 authorsRoutes.use(requireLogin);
 
-authorsRoutes.post('/createAuthor', [
+authorsRoutes.post('', [
     body('nombre').notEmpty().withMessage('El nombre es obligatorio')
 ], createAuthor);
 

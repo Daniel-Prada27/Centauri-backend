@@ -7,7 +7,7 @@ const editorialRoutes = Router();
 
 editorialRoutes.use(requireLogin);
 
-editorialRoutes.post('/createEditorial', [
+editorialRoutes.post('', [
     body('nombre').notEmpty().withMessage('El nombre es obligatorio')
 ], createEditorial);
 

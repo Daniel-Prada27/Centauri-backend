@@ -7,7 +7,7 @@ const productsRoutes = Router();
 
 productsRoutes.use(requireLogin);
 
-productsRoutes.post('/createProduct', [
+productsRoutes.post('', [
     body('nombre').notEmpty().withMessage('El nombre es obligatorio'),
     body('existencias').isInt({ min: 0 }).withMessage('Las existencias deben ser un número entero mayor o igual a 0'),
     body('fecha_publicacion').isDate().withMessage('La fecha de publicación no es válida'),
