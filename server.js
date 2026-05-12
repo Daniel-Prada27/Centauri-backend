@@ -1,12 +1,13 @@
-import dotenv from 'dotenv';
+import 'dotenv/config';
 import express from 'express';
 import session from 'express-session';
 import authRoutes from './routes/authRoutes.js';
 import productsRoutes from './routes/productsRoutes.js';
+import authorsRoutes from './routes/authorsRoutes.js';
+import editorialRoutes from './routes/editorialRoutes.js';
+import categoryRoutes from './routes/categoryRoutes.js';
 import errorHandler from './middleware/errorHandler.js'
 
-
-dotenv.config();
 const app = express()
 const port = 3000
 
@@ -17,7 +18,7 @@ app.get('/', (req, res) => {
 app.use(express.json());
 
 app.use(session({
-  secret: process.env.SESSION_SECRET,
+  secret: process.env.SESSION_SECRET || 'centauri-dev-secret',
   resave: false,
   saveUninitialized: false,
   cookie: { secure: false }
@@ -27,6 +28,12 @@ app.use(session({
 app.use('/api/auth', authRoutes);
 //Products routes
 app.use('/api/products', productsRoutes);
+//Author routes
+app.use('/api/authors', authorsRoutes);
+//Editorial routes
+app.use('/api/editorials', editorialRoutes);
+//Category routes
+app.use('/api/categories', categoryRoutes);
 
 app.use(errorHandler);
 
