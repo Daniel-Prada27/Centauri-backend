@@ -7,7 +7,7 @@ const categoryRoutes = Router();
 
 categoryRoutes.use(requireLogin);
 
-categoryRoutes.post('/createCategory', [
+categoryRoutes.post('', [
     body('nombre').notEmpty().withMessage('El nombre es obligatorio')
 ], createCategory);
 
