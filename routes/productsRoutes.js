@@ -1,6 +1,6 @@
 import {Router} from 'express';
 import {body} from 'express-validator';
-import { createProduct } from '../controllers/productsController.js';
+import { createProduct, readProduct } from '../controllers/productsController.js';
 import { requireLogin } from '../middleware/validateSession.js';
 
 const productsRoutes = Router();
@@ -16,5 +16,7 @@ productsRoutes.post('', [
     body('id_editorial').notEmpty().withMessage('La editorial es obligatoria'),
     body('id_categoria').notEmpty().withMessage('La categoría es obligatoria')
 ], createProduct)
+
+productsRoutes.get('', readProduct);
 
 export default productsRoutes;

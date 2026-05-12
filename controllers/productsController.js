@@ -8,3 +8,14 @@ export const createProduct = async (req, res, next) => {
         next(error);
     }
 }
+
+export const readProduct = async (req, res, next) => {
+    try {
+        const { nombre, autor, editorial, tipo, categoria } = req.query;
+        console.log("CONTROLLER");
+        const products = await productsService.readProduct({ nombre, autor, editorial, tipo, categoria });
+        res.status(200).json({ data: products });
+    } catch (error) {
+        next(error);
+    }
+}

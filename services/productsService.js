@@ -1,5 +1,5 @@
 import { prisma } from '../prisma.js';
-import { AppError }from '../errors/appError.js';
+import { AppError } from '../errors/appError.js';
 
 export const createProduct = async (data) => {
     const {
@@ -74,3 +74,47 @@ export const createProduct = async (data) => {
         data: producto
     };
 };
+
+export const readProduct = async ({ nombre, autor, editorial, tipo, categoria }) => {
+    console.log("SERVICE");
+    const where = {
+        ...(nombre && {
+            nombre:
+                { contains: nombre, mode: 'insensitive' }
+        }),
+        ...(editorial && {
+            editorial: {
+                is:
+                    { nombre: { contains: editorial, mode: 'insensitive' } }
+            }
+        }),
+        ...(tipo && {
+            tipo: {
+                is:
+                    { nombre: { contains: tipo, mode: 'insensitive' } }
+            }
+        }),
+        ...(categoria && {
+            categoria:
+            {
+                is: {
+                    nombre: { contains: categoria, mode: 'insensitive' }
+                }
+            }
+        }),
+    };
+
+    const products = await prisma.productos.findMany({
+        where,
+        include: {
+            tipo: true,
+            autor: true,
+            editorial: true,
+            categoria: true,
+        }
+    });
+
+    console.log("QUERY");
+
+    return products;
+}
