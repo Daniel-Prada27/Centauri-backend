@@ -60,7 +60,7 @@ model Productos {
 model Clientes {
   id          String    @id @default(uuid()) @db.Uuid
   id_usuario  String    @unique @db.Uuid
-  cedula      String    @db.VarChar(30)
+  cedula      String    @db.VarChar(30)      @unique
   nombre      String    @db.VarChar(45)
   direccion   String    @db.VarChar(200)
   activo Boolean
@@ -75,7 +75,7 @@ model Clientes {
 model Empleados {
   id          String    @id @default(uuid()) @db.Uuid
   id_usuario  String    @unique @db.Uuid
-  cedula      String    @db.VarChar(30)
+  cedula      String    @db.VarChar(30)      @unique
   nombre      String    @db.VarChar(45)
   activo      Boolean
   fecha_terminacion DateTime? @db.Date
@@ -89,7 +89,7 @@ model Usuarios {
     id       String  @id @default(uuid()) @db.Uuid
     usuario  String  @db.VarChar(25)
     clave    String  @db.Text
-    correo   String  @db.VarChar(60)
+    correo   String  @db.VarChar(60)     @unique
 
     cliente Clientes?
     empleado Empleados?
@@ -98,7 +98,7 @@ model Usuarios {
 
 model Estados {
   id    String      @id @default(uuid()) @db.Uuid
-  nombre  String    @db.VarChar(30) @uniquea
+  nombre  String    @db.VarChar(30) @unique
 
   pedidos Pedidos[]
 }

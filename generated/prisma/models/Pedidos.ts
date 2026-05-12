@@ -236,10 +236,10 @@ export type PedidosWhereInput = {
   id_cliente?: Prisma.UuidFilter<"Pedidos"> | string
   id_empleado?: Prisma.UuidFilter<"Pedidos"> | string
   id_estado?: Prisma.UuidFilter<"Pedidos"> | string
-  detalles?: Prisma.Detalles_PedidosListRelationFilter
   cliente?: Prisma.XOR<Prisma.ClientesScalarRelationFilter, Prisma.ClientesWhereInput>
   empleado?: Prisma.XOR<Prisma.EmpleadosScalarRelationFilter, Prisma.EmpleadosWhereInput>
   estado?: Prisma.XOR<Prisma.EstadosScalarRelationFilter, Prisma.EstadosWhereInput>
+  detalles?: Prisma.Detalles_PedidosListRelationFilter
 }
 
 export type PedidosOrderByWithRelationInput = {
@@ -250,10 +250,10 @@ export type PedidosOrderByWithRelationInput = {
   id_cliente?: Prisma.SortOrder
   id_empleado?: Prisma.SortOrder
   id_estado?: Prisma.SortOrder
-  detalles?: Prisma.Detalles_PedidosOrderByRelationAggregateInput
   cliente?: Prisma.ClientesOrderByWithRelationInput
   empleado?: Prisma.EmpleadosOrderByWithRelationInput
   estado?: Prisma.EstadosOrderByWithRelationInput
+  detalles?: Prisma.Detalles_PedidosOrderByRelationAggregateInput
 }
 
 export type PedidosWhereUniqueInput = Prisma.AtLeast<{
@@ -267,10 +267,10 @@ export type PedidosWhereUniqueInput = Prisma.AtLeast<{
   id_cliente?: Prisma.UuidFilter<"Pedidos"> | string
   id_empleado?: Prisma.UuidFilter<"Pedidos"> | string
   id_estado?: Prisma.UuidFilter<"Pedidos"> | string
-  detalles?: Prisma.Detalles_PedidosListRelationFilter
   cliente?: Prisma.XOR<Prisma.ClientesScalarRelationFilter, Prisma.ClientesWhereInput>
   empleado?: Prisma.XOR<Prisma.EmpleadosScalarRelationFilter, Prisma.EmpleadosWhereInput>
   estado?: Prisma.XOR<Prisma.EstadosScalarRelationFilter, Prisma.EstadosWhereInput>
+  detalles?: Prisma.Detalles_PedidosListRelationFilter
 }, "id">
 
 export type PedidosOrderByWithAggregationInput = {
@@ -306,10 +306,10 @@ export type PedidosCreateInput = {
   precio: number
   cantidad_productos: number
   fecha_pedido: Date | string
-  detalles?: Prisma.Detalles_PedidosCreateNestedManyWithoutPedidoInput
   cliente: Prisma.ClientesCreateNestedOneWithoutPedidosInput
   empleado: Prisma.EmpleadosCreateNestedOneWithoutPedidosInput
   estado: Prisma.EstadosCreateNestedOneWithoutPedidosInput
+  detalles?: Prisma.Detalles_PedidosCreateNestedManyWithoutPedidoInput
 }
 
 export type PedidosUncheckedCreateInput = {
@@ -328,10 +328,10 @@ export type PedidosUpdateInput = {
   precio?: Prisma.FloatFieldUpdateOperationsInput | number
   cantidad_productos?: Prisma.IntFieldUpdateOperationsInput | number
   fecha_pedido?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  detalles?: Prisma.Detalles_PedidosUpdateManyWithoutPedidoNestedInput
   cliente?: Prisma.ClientesUpdateOneRequiredWithoutPedidosNestedInput
   empleado?: Prisma.EmpleadosUpdateOneRequiredWithoutPedidosNestedInput
   estado?: Prisma.EstadosUpdateOneRequiredWithoutPedidosNestedInput
+  detalles?: Prisma.Detalles_PedidosUpdateManyWithoutPedidoNestedInput
 }
 
 export type PedidosUncheckedUpdateInput = {
@@ -580,9 +580,9 @@ export type PedidosCreateWithoutClienteInput = {
   precio: number
   cantidad_productos: number
   fecha_pedido: Date | string
-  detalles?: Prisma.Detalles_PedidosCreateNestedManyWithoutPedidoInput
   empleado: Prisma.EmpleadosCreateNestedOneWithoutPedidosInput
   estado: Prisma.EstadosCreateNestedOneWithoutPedidosInput
+  detalles?: Prisma.Detalles_PedidosCreateNestedManyWithoutPedidoInput
 }
 
 export type PedidosUncheckedCreateWithoutClienteInput = {
@@ -639,9 +639,9 @@ export type PedidosCreateWithoutEmpleadoInput = {
   precio: number
   cantidad_productos: number
   fecha_pedido: Date | string
-  detalles?: Prisma.Detalles_PedidosCreateNestedManyWithoutPedidoInput
   cliente: Prisma.ClientesCreateNestedOneWithoutPedidosInput
   estado: Prisma.EstadosCreateNestedOneWithoutPedidosInput
+  detalles?: Prisma.Detalles_PedidosCreateNestedManyWithoutPedidoInput
 }
 
 export type PedidosUncheckedCreateWithoutEmpleadoInput = {
@@ -685,9 +685,9 @@ export type PedidosCreateWithoutEstadoInput = {
   precio: number
   cantidad_productos: number
   fecha_pedido: Date | string
-  detalles?: Prisma.Detalles_PedidosCreateNestedManyWithoutPedidoInput
   cliente: Prisma.ClientesCreateNestedOneWithoutPedidosInput
   empleado: Prisma.EmpleadosCreateNestedOneWithoutPedidosInput
+  detalles?: Prisma.Detalles_PedidosCreateNestedManyWithoutPedidoInput
 }
 
 export type PedidosUncheckedCreateWithoutEstadoInput = {
@@ -796,9 +796,9 @@ export type PedidosUpdateWithoutClienteInput = {
   precio?: Prisma.FloatFieldUpdateOperationsInput | number
   cantidad_productos?: Prisma.IntFieldUpdateOperationsInput | number
   fecha_pedido?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  detalles?: Prisma.Detalles_PedidosUpdateManyWithoutPedidoNestedInput
   empleado?: Prisma.EmpleadosUpdateOneRequiredWithoutPedidosNestedInput
   estado?: Prisma.EstadosUpdateOneRequiredWithoutPedidosNestedInput
+  detalles?: Prisma.Detalles_PedidosUpdateManyWithoutPedidoNestedInput
 }
 
 export type PedidosUncheckedUpdateWithoutClienteInput = {
@@ -834,9 +834,9 @@ export type PedidosUpdateWithoutEmpleadoInput = {
   precio?: Prisma.FloatFieldUpdateOperationsInput | number
   cantidad_productos?: Prisma.IntFieldUpdateOperationsInput | number
   fecha_pedido?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  detalles?: Prisma.Detalles_PedidosUpdateManyWithoutPedidoNestedInput
   cliente?: Prisma.ClientesUpdateOneRequiredWithoutPedidosNestedInput
   estado?: Prisma.EstadosUpdateOneRequiredWithoutPedidosNestedInput
+  detalles?: Prisma.Detalles_PedidosUpdateManyWithoutPedidoNestedInput
 }
 
 export type PedidosUncheckedUpdateWithoutEmpleadoInput = {
@@ -872,9 +872,9 @@ export type PedidosUpdateWithoutEstadoInput = {
   precio?: Prisma.FloatFieldUpdateOperationsInput | number
   cantidad_productos?: Prisma.IntFieldUpdateOperationsInput | number
   fecha_pedido?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  detalles?: Prisma.Detalles_PedidosUpdateManyWithoutPedidoNestedInput
   cliente?: Prisma.ClientesUpdateOneRequiredWithoutPedidosNestedInput
   empleado?: Prisma.EmpleadosUpdateOneRequiredWithoutPedidosNestedInput
+  detalles?: Prisma.Detalles_PedidosUpdateManyWithoutPedidoNestedInput
 }
 
 export type PedidosUncheckedUpdateWithoutEstadoInput = {
@@ -935,10 +935,10 @@ export type PedidosSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs 
   id_cliente?: boolean
   id_empleado?: boolean
   id_estado?: boolean
-  detalles?: boolean | Prisma.Pedidos$detallesArgs<ExtArgs>
   cliente?: boolean | Prisma.ClientesDefaultArgs<ExtArgs>
   empleado?: boolean | Prisma.EmpleadosDefaultArgs<ExtArgs>
   estado?: boolean | Prisma.EstadosDefaultArgs<ExtArgs>
+  detalles?: boolean | Prisma.Pedidos$detallesArgs<ExtArgs>
   _count?: boolean | Prisma.PedidosCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["pedidos"]>
 
@@ -980,10 +980,10 @@ export type PedidosSelectScalar = {
 
 export type PedidosOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "precio" | "cantidad_productos" | "fecha_pedido" | "id_cliente" | "id_empleado" | "id_estado", ExtArgs["result"]["pedidos"]>
 export type PedidosInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  detalles?: boolean | Prisma.Pedidos$detallesArgs<ExtArgs>
   cliente?: boolean | Prisma.ClientesDefaultArgs<ExtArgs>
   empleado?: boolean | Prisma.EmpleadosDefaultArgs<ExtArgs>
   estado?: boolean | Prisma.EstadosDefaultArgs<ExtArgs>
+  detalles?: boolean | Prisma.Pedidos$detallesArgs<ExtArgs>
   _count?: boolean | Prisma.PedidosCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type PedidosIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -1000,10 +1000,10 @@ export type PedidosIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Exte
 export type $PedidosPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "Pedidos"
   objects: {
-    detalles: Prisma.$Detalles_PedidosPayload<ExtArgs>[]
     cliente: Prisma.$ClientesPayload<ExtArgs>
     empleado: Prisma.$EmpleadosPayload<ExtArgs>
     estado: Prisma.$EstadosPayload<ExtArgs>
+    detalles: Prisma.$Detalles_PedidosPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -1407,10 +1407,10 @@ readonly fields: PedidosFieldRefs;
  */
 export interface Prisma__PedidosClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
-  detalles<T extends Prisma.Pedidos$detallesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Pedidos$detallesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$Detalles_PedidosPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   cliente<T extends Prisma.ClientesDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.ClientesDefaultArgs<ExtArgs>>): Prisma.Prisma__ClientesClient<runtime.Types.Result.GetResult<Prisma.$ClientesPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   empleado<T extends Prisma.EmpleadosDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.EmpleadosDefaultArgs<ExtArgs>>): Prisma.Prisma__EmpleadosClient<runtime.Types.Result.GetResult<Prisma.$EmpleadosPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   estado<T extends Prisma.EstadosDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.EstadosDefaultArgs<ExtArgs>>): Prisma.Prisma__EstadosClient<runtime.Types.Result.GetResult<Prisma.$EstadosPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+  detalles<T extends Prisma.Pedidos$detallesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Pedidos$detallesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$Detalles_PedidosPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.

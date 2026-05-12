@@ -169,12 +169,12 @@ export type EstadosOrderByWithRelationInput = {
 
 export type EstadosWhereUniqueInput = Prisma.AtLeast<{
   id?: string
+  nombre?: string
   AND?: Prisma.EstadosWhereInput | Prisma.EstadosWhereInput[]
   OR?: Prisma.EstadosWhereInput[]
   NOT?: Prisma.EstadosWhereInput | Prisma.EstadosWhereInput[]
-  nombre?: Prisma.StringFilter<"Estados"> | string
   pedidos?: Prisma.PedidosListRelationFilter
-}, "id">
+}, "id" | "nombre">
 
 export type EstadosOrderByWithAggregationInput = {
   id?: Prisma.SortOrder

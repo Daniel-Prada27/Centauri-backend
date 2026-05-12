@@ -240,12 +240,12 @@ export type ProductosWhereInput = {
   id_autor?: Prisma.UuidFilter<"Productos"> | string
   id_editorial?: Prisma.UuidFilter<"Productos"> | string
   id_categoria?: Prisma.UuidFilter<"Productos"> | string
-  carrito?: Prisma.CarritosListRelationFilter
-  detallesPedido?: Prisma.Detalles_PedidosListRelationFilter
-  autor?: Prisma.XOR<Prisma.AutoresScalarRelationFilter, Prisma.AutoresWhereInput>
-  categoria?: Prisma.XOR<Prisma.CategoriasScalarRelationFilter, Prisma.CategoriasWhereInput>
-  editorial?: Prisma.XOR<Prisma.EditorialesScalarRelationFilter, Prisma.EditorialesWhereInput>
   tipo?: Prisma.XOR<Prisma.TiposScalarRelationFilter, Prisma.TiposWhereInput>
+  autor?: Prisma.XOR<Prisma.AutoresScalarRelationFilter, Prisma.AutoresWhereInput>
+  editorial?: Prisma.XOR<Prisma.EditorialesScalarRelationFilter, Prisma.EditorialesWhereInput>
+  categoria?: Prisma.XOR<Prisma.CategoriasScalarRelationFilter, Prisma.CategoriasWhereInput>
+  detallesPedido?: Prisma.Detalles_PedidosListRelationFilter
+  carrito?: Prisma.CarritosListRelationFilter
 }
 
 export type ProductosOrderByWithRelationInput = {
@@ -257,12 +257,12 @@ export type ProductosOrderByWithRelationInput = {
   id_autor?: Prisma.SortOrder
   id_editorial?: Prisma.SortOrder
   id_categoria?: Prisma.SortOrder
-  carrito?: Prisma.CarritosOrderByRelationAggregateInput
-  detallesPedido?: Prisma.Detalles_PedidosOrderByRelationAggregateInput
-  autor?: Prisma.AutoresOrderByWithRelationInput
-  categoria?: Prisma.CategoriasOrderByWithRelationInput
-  editorial?: Prisma.EditorialesOrderByWithRelationInput
   tipo?: Prisma.TiposOrderByWithRelationInput
+  autor?: Prisma.AutoresOrderByWithRelationInput
+  editorial?: Prisma.EditorialesOrderByWithRelationInput
+  categoria?: Prisma.CategoriasOrderByWithRelationInput
+  detallesPedido?: Prisma.Detalles_PedidosOrderByRelationAggregateInput
+  carrito?: Prisma.CarritosOrderByRelationAggregateInput
 }
 
 export type ProductosWhereUniqueInput = Prisma.AtLeast<{
@@ -277,12 +277,12 @@ export type ProductosWhereUniqueInput = Prisma.AtLeast<{
   id_autor?: Prisma.UuidFilter<"Productos"> | string
   id_editorial?: Prisma.UuidFilter<"Productos"> | string
   id_categoria?: Prisma.UuidFilter<"Productos"> | string
-  carrito?: Prisma.CarritosListRelationFilter
-  detallesPedido?: Prisma.Detalles_PedidosListRelationFilter
-  autor?: Prisma.XOR<Prisma.AutoresScalarRelationFilter, Prisma.AutoresWhereInput>
-  categoria?: Prisma.XOR<Prisma.CategoriasScalarRelationFilter, Prisma.CategoriasWhereInput>
-  editorial?: Prisma.XOR<Prisma.EditorialesScalarRelationFilter, Prisma.EditorialesWhereInput>
   tipo?: Prisma.XOR<Prisma.TiposScalarRelationFilter, Prisma.TiposWhereInput>
+  autor?: Prisma.XOR<Prisma.AutoresScalarRelationFilter, Prisma.AutoresWhereInput>
+  editorial?: Prisma.XOR<Prisma.EditorialesScalarRelationFilter, Prisma.EditorialesWhereInput>
+  categoria?: Prisma.XOR<Prisma.CategoriasScalarRelationFilter, Prisma.CategoriasWhereInput>
+  detallesPedido?: Prisma.Detalles_PedidosListRelationFilter
+  carrito?: Prisma.CarritosListRelationFilter
 }, "id">
 
 export type ProductosOrderByWithAggregationInput = {
@@ -320,12 +320,12 @@ export type ProductosCreateInput = {
   nombre: string
   existencias: number
   fecha_publicacion: Date | string
-  carrito?: Prisma.CarritosCreateNestedManyWithoutProductoInput
-  detallesPedido?: Prisma.Detalles_PedidosCreateNestedManyWithoutProductoInput
-  autor: Prisma.AutoresCreateNestedOneWithoutProductosInput
-  categoria: Prisma.CategoriasCreateNestedOneWithoutProductosInput
-  editorial: Prisma.EditorialesCreateNestedOneWithoutProductosInput
   tipo: Prisma.TiposCreateNestedOneWithoutProductosInput
+  autor: Prisma.AutoresCreateNestedOneWithoutProductosInput
+  editorial: Prisma.EditorialesCreateNestedOneWithoutProductosInput
+  categoria: Prisma.CategoriasCreateNestedOneWithoutProductosInput
+  detallesPedido?: Prisma.Detalles_PedidosCreateNestedManyWithoutProductoInput
+  carrito?: Prisma.CarritosCreateNestedManyWithoutProductoInput
 }
 
 export type ProductosUncheckedCreateInput = {
@@ -337,8 +337,8 @@ export type ProductosUncheckedCreateInput = {
   id_autor: string
   id_editorial: string
   id_categoria: string
-  carrito?: Prisma.CarritosUncheckedCreateNestedManyWithoutProductoInput
   detallesPedido?: Prisma.Detalles_PedidosUncheckedCreateNestedManyWithoutProductoInput
+  carrito?: Prisma.CarritosUncheckedCreateNestedManyWithoutProductoInput
 }
 
 export type ProductosUpdateInput = {
@@ -346,12 +346,12 @@ export type ProductosUpdateInput = {
   nombre?: Prisma.StringFieldUpdateOperationsInput | string
   existencias?: Prisma.IntFieldUpdateOperationsInput | number
   fecha_publicacion?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  carrito?: Prisma.CarritosUpdateManyWithoutProductoNestedInput
-  detallesPedido?: Prisma.Detalles_PedidosUpdateManyWithoutProductoNestedInput
-  autor?: Prisma.AutoresUpdateOneRequiredWithoutProductosNestedInput
-  categoria?: Prisma.CategoriasUpdateOneRequiredWithoutProductosNestedInput
-  editorial?: Prisma.EditorialesUpdateOneRequiredWithoutProductosNestedInput
   tipo?: Prisma.TiposUpdateOneRequiredWithoutProductosNestedInput
+  autor?: Prisma.AutoresUpdateOneRequiredWithoutProductosNestedInput
+  editorial?: Prisma.EditorialesUpdateOneRequiredWithoutProductosNestedInput
+  categoria?: Prisma.CategoriasUpdateOneRequiredWithoutProductosNestedInput
+  detallesPedido?: Prisma.Detalles_PedidosUpdateManyWithoutProductoNestedInput
+  carrito?: Prisma.CarritosUpdateManyWithoutProductoNestedInput
 }
 
 export type ProductosUncheckedUpdateInput = {
@@ -363,8 +363,8 @@ export type ProductosUncheckedUpdateInput = {
   id_autor?: Prisma.StringFieldUpdateOperationsInput | string
   id_editorial?: Prisma.StringFieldUpdateOperationsInput | string
   id_categoria?: Prisma.StringFieldUpdateOperationsInput | string
-  carrito?: Prisma.CarritosUncheckedUpdateManyWithoutProductoNestedInput
   detallesPedido?: Prisma.Detalles_PedidosUncheckedUpdateManyWithoutProductoNestedInput
+  carrito?: Prisma.CarritosUncheckedUpdateManyWithoutProductoNestedInput
 }
 
 export type ProductosCreateManyInput = {
@@ -665,11 +665,11 @@ export type ProductosCreateWithoutCategoriaInput = {
   nombre: string
   existencias: number
   fecha_publicacion: Date | string
-  carrito?: Prisma.CarritosCreateNestedManyWithoutProductoInput
-  detallesPedido?: Prisma.Detalles_PedidosCreateNestedManyWithoutProductoInput
+  tipo: Prisma.TiposCreateNestedOneWithoutProductosInput
   autor: Prisma.AutoresCreateNestedOneWithoutProductosInput
   editorial: Prisma.EditorialesCreateNestedOneWithoutProductosInput
-  tipo: Prisma.TiposCreateNestedOneWithoutProductosInput
+  detallesPedido?: Prisma.Detalles_PedidosCreateNestedManyWithoutProductoInput
+  carrito?: Prisma.CarritosCreateNestedManyWithoutProductoInput
 }
 
 export type ProductosUncheckedCreateWithoutCategoriaInput = {
@@ -680,8 +680,8 @@ export type ProductosUncheckedCreateWithoutCategoriaInput = {
   id_tipo: string
   id_autor: string
   id_editorial: string
-  carrito?: Prisma.CarritosUncheckedCreateNestedManyWithoutProductoInput
   detallesPedido?: Prisma.Detalles_PedidosUncheckedCreateNestedManyWithoutProductoInput
+  carrito?: Prisma.CarritosUncheckedCreateNestedManyWithoutProductoInput
 }
 
 export type ProductosCreateOrConnectWithoutCategoriaInput = {
@@ -729,11 +729,11 @@ export type ProductosCreateWithoutAutorInput = {
   nombre: string
   existencias: number
   fecha_publicacion: Date | string
-  carrito?: Prisma.CarritosCreateNestedManyWithoutProductoInput
-  detallesPedido?: Prisma.Detalles_PedidosCreateNestedManyWithoutProductoInput
-  categoria: Prisma.CategoriasCreateNestedOneWithoutProductosInput
-  editorial: Prisma.EditorialesCreateNestedOneWithoutProductosInput
   tipo: Prisma.TiposCreateNestedOneWithoutProductosInput
+  editorial: Prisma.EditorialesCreateNestedOneWithoutProductosInput
+  categoria: Prisma.CategoriasCreateNestedOneWithoutProductosInput
+  detallesPedido?: Prisma.Detalles_PedidosCreateNestedManyWithoutProductoInput
+  carrito?: Prisma.CarritosCreateNestedManyWithoutProductoInput
 }
 
 export type ProductosUncheckedCreateWithoutAutorInput = {
@@ -744,8 +744,8 @@ export type ProductosUncheckedCreateWithoutAutorInput = {
   id_tipo: string
   id_editorial: string
   id_categoria: string
-  carrito?: Prisma.CarritosUncheckedCreateNestedManyWithoutProductoInput
   detallesPedido?: Prisma.Detalles_PedidosUncheckedCreateNestedManyWithoutProductoInput
+  carrito?: Prisma.CarritosUncheckedCreateNestedManyWithoutProductoInput
 }
 
 export type ProductosCreateOrConnectWithoutAutorInput = {
@@ -779,11 +779,11 @@ export type ProductosCreateWithoutEditorialInput = {
   nombre: string
   existencias: number
   fecha_publicacion: Date | string
-  carrito?: Prisma.CarritosCreateNestedManyWithoutProductoInput
-  detallesPedido?: Prisma.Detalles_PedidosCreateNestedManyWithoutProductoInput
+  tipo: Prisma.TiposCreateNestedOneWithoutProductosInput
   autor: Prisma.AutoresCreateNestedOneWithoutProductosInput
   categoria: Prisma.CategoriasCreateNestedOneWithoutProductosInput
-  tipo: Prisma.TiposCreateNestedOneWithoutProductosInput
+  detallesPedido?: Prisma.Detalles_PedidosCreateNestedManyWithoutProductoInput
+  carrito?: Prisma.CarritosCreateNestedManyWithoutProductoInput
 }
 
 export type ProductosUncheckedCreateWithoutEditorialInput = {
@@ -794,8 +794,8 @@ export type ProductosUncheckedCreateWithoutEditorialInput = {
   id_tipo: string
   id_autor: string
   id_categoria: string
-  carrito?: Prisma.CarritosUncheckedCreateNestedManyWithoutProductoInput
   detallesPedido?: Prisma.Detalles_PedidosUncheckedCreateNestedManyWithoutProductoInput
+  carrito?: Prisma.CarritosUncheckedCreateNestedManyWithoutProductoInput
 }
 
 export type ProductosCreateOrConnectWithoutEditorialInput = {
@@ -829,11 +829,11 @@ export type ProductosCreateWithoutTipoInput = {
   nombre: string
   existencias: number
   fecha_publicacion: Date | string
-  carrito?: Prisma.CarritosCreateNestedManyWithoutProductoInput
-  detallesPedido?: Prisma.Detalles_PedidosCreateNestedManyWithoutProductoInput
   autor: Prisma.AutoresCreateNestedOneWithoutProductosInput
-  categoria: Prisma.CategoriasCreateNestedOneWithoutProductosInput
   editorial: Prisma.EditorialesCreateNestedOneWithoutProductosInput
+  categoria: Prisma.CategoriasCreateNestedOneWithoutProductosInput
+  detallesPedido?: Prisma.Detalles_PedidosCreateNestedManyWithoutProductoInput
+  carrito?: Prisma.CarritosCreateNestedManyWithoutProductoInput
 }
 
 export type ProductosUncheckedCreateWithoutTipoInput = {
@@ -844,8 +844,8 @@ export type ProductosUncheckedCreateWithoutTipoInput = {
   id_autor: string
   id_editorial: string
   id_categoria: string
-  carrito?: Prisma.CarritosUncheckedCreateNestedManyWithoutProductoInput
   detallesPedido?: Prisma.Detalles_PedidosUncheckedCreateNestedManyWithoutProductoInput
+  carrito?: Prisma.CarritosUncheckedCreateNestedManyWithoutProductoInput
 }
 
 export type ProductosCreateOrConnectWithoutTipoInput = {
@@ -879,11 +879,11 @@ export type ProductosCreateWithoutDetallesPedidoInput = {
   nombre: string
   existencias: number
   fecha_publicacion: Date | string
-  carrito?: Prisma.CarritosCreateNestedManyWithoutProductoInput
-  autor: Prisma.AutoresCreateNestedOneWithoutProductosInput
-  categoria: Prisma.CategoriasCreateNestedOneWithoutProductosInput
-  editorial: Prisma.EditorialesCreateNestedOneWithoutProductosInput
   tipo: Prisma.TiposCreateNestedOneWithoutProductosInput
+  autor: Prisma.AutoresCreateNestedOneWithoutProductosInput
+  editorial: Prisma.EditorialesCreateNestedOneWithoutProductosInput
+  categoria: Prisma.CategoriasCreateNestedOneWithoutProductosInput
+  carrito?: Prisma.CarritosCreateNestedManyWithoutProductoInput
 }
 
 export type ProductosUncheckedCreateWithoutDetallesPedidoInput = {
@@ -919,11 +919,11 @@ export type ProductosUpdateWithoutDetallesPedidoInput = {
   nombre?: Prisma.StringFieldUpdateOperationsInput | string
   existencias?: Prisma.IntFieldUpdateOperationsInput | number
   fecha_publicacion?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  carrito?: Prisma.CarritosUpdateManyWithoutProductoNestedInput
-  autor?: Prisma.AutoresUpdateOneRequiredWithoutProductosNestedInput
-  categoria?: Prisma.CategoriasUpdateOneRequiredWithoutProductosNestedInput
-  editorial?: Prisma.EditorialesUpdateOneRequiredWithoutProductosNestedInput
   tipo?: Prisma.TiposUpdateOneRequiredWithoutProductosNestedInput
+  autor?: Prisma.AutoresUpdateOneRequiredWithoutProductosNestedInput
+  editorial?: Prisma.EditorialesUpdateOneRequiredWithoutProductosNestedInput
+  categoria?: Prisma.CategoriasUpdateOneRequiredWithoutProductosNestedInput
+  carrito?: Prisma.CarritosUpdateManyWithoutProductoNestedInput
 }
 
 export type ProductosUncheckedUpdateWithoutDetallesPedidoInput = {
@@ -943,11 +943,11 @@ export type ProductosCreateWithoutCarritoInput = {
   nombre: string
   existencias: number
   fecha_publicacion: Date | string
-  detallesPedido?: Prisma.Detalles_PedidosCreateNestedManyWithoutProductoInput
-  autor: Prisma.AutoresCreateNestedOneWithoutProductosInput
-  categoria: Prisma.CategoriasCreateNestedOneWithoutProductosInput
-  editorial: Prisma.EditorialesCreateNestedOneWithoutProductosInput
   tipo: Prisma.TiposCreateNestedOneWithoutProductosInput
+  autor: Prisma.AutoresCreateNestedOneWithoutProductosInput
+  editorial: Prisma.EditorialesCreateNestedOneWithoutProductosInput
+  categoria: Prisma.CategoriasCreateNestedOneWithoutProductosInput
+  detallesPedido?: Prisma.Detalles_PedidosCreateNestedManyWithoutProductoInput
 }
 
 export type ProductosUncheckedCreateWithoutCarritoInput = {
@@ -983,11 +983,11 @@ export type ProductosUpdateWithoutCarritoInput = {
   nombre?: Prisma.StringFieldUpdateOperationsInput | string
   existencias?: Prisma.IntFieldUpdateOperationsInput | number
   fecha_publicacion?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  detallesPedido?: Prisma.Detalles_PedidosUpdateManyWithoutProductoNestedInput
-  autor?: Prisma.AutoresUpdateOneRequiredWithoutProductosNestedInput
-  categoria?: Prisma.CategoriasUpdateOneRequiredWithoutProductosNestedInput
-  editorial?: Prisma.EditorialesUpdateOneRequiredWithoutProductosNestedInput
   tipo?: Prisma.TiposUpdateOneRequiredWithoutProductosNestedInput
+  autor?: Prisma.AutoresUpdateOneRequiredWithoutProductosNestedInput
+  editorial?: Prisma.EditorialesUpdateOneRequiredWithoutProductosNestedInput
+  categoria?: Prisma.CategoriasUpdateOneRequiredWithoutProductosNestedInput
+  detallesPedido?: Prisma.Detalles_PedidosUpdateManyWithoutProductoNestedInput
 }
 
 export type ProductosUncheckedUpdateWithoutCarritoInput = {
@@ -1017,11 +1017,11 @@ export type ProductosUpdateWithoutCategoriaInput = {
   nombre?: Prisma.StringFieldUpdateOperationsInput | string
   existencias?: Prisma.IntFieldUpdateOperationsInput | number
   fecha_publicacion?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  carrito?: Prisma.CarritosUpdateManyWithoutProductoNestedInput
-  detallesPedido?: Prisma.Detalles_PedidosUpdateManyWithoutProductoNestedInput
+  tipo?: Prisma.TiposUpdateOneRequiredWithoutProductosNestedInput
   autor?: Prisma.AutoresUpdateOneRequiredWithoutProductosNestedInput
   editorial?: Prisma.EditorialesUpdateOneRequiredWithoutProductosNestedInput
-  tipo?: Prisma.TiposUpdateOneRequiredWithoutProductosNestedInput
+  detallesPedido?: Prisma.Detalles_PedidosUpdateManyWithoutProductoNestedInput
+  carrito?: Prisma.CarritosUpdateManyWithoutProductoNestedInput
 }
 
 export type ProductosUncheckedUpdateWithoutCategoriaInput = {
@@ -1032,8 +1032,8 @@ export type ProductosUncheckedUpdateWithoutCategoriaInput = {
   id_tipo?: Prisma.StringFieldUpdateOperationsInput | string
   id_autor?: Prisma.StringFieldUpdateOperationsInput | string
   id_editorial?: Prisma.StringFieldUpdateOperationsInput | string
-  carrito?: Prisma.CarritosUncheckedUpdateManyWithoutProductoNestedInput
   detallesPedido?: Prisma.Detalles_PedidosUncheckedUpdateManyWithoutProductoNestedInput
+  carrito?: Prisma.CarritosUncheckedUpdateManyWithoutProductoNestedInput
 }
 
 export type ProductosUncheckedUpdateManyWithoutCategoriaInput = {
@@ -1061,11 +1061,11 @@ export type ProductosUpdateWithoutAutorInput = {
   nombre?: Prisma.StringFieldUpdateOperationsInput | string
   existencias?: Prisma.IntFieldUpdateOperationsInput | number
   fecha_publicacion?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  carrito?: Prisma.CarritosUpdateManyWithoutProductoNestedInput
-  detallesPedido?: Prisma.Detalles_PedidosUpdateManyWithoutProductoNestedInput
-  categoria?: Prisma.CategoriasUpdateOneRequiredWithoutProductosNestedInput
-  editorial?: Prisma.EditorialesUpdateOneRequiredWithoutProductosNestedInput
   tipo?: Prisma.TiposUpdateOneRequiredWithoutProductosNestedInput
+  editorial?: Prisma.EditorialesUpdateOneRequiredWithoutProductosNestedInput
+  categoria?: Prisma.CategoriasUpdateOneRequiredWithoutProductosNestedInput
+  detallesPedido?: Prisma.Detalles_PedidosUpdateManyWithoutProductoNestedInput
+  carrito?: Prisma.CarritosUpdateManyWithoutProductoNestedInput
 }
 
 export type ProductosUncheckedUpdateWithoutAutorInput = {
@@ -1076,8 +1076,8 @@ export type ProductosUncheckedUpdateWithoutAutorInput = {
   id_tipo?: Prisma.StringFieldUpdateOperationsInput | string
   id_editorial?: Prisma.StringFieldUpdateOperationsInput | string
   id_categoria?: Prisma.StringFieldUpdateOperationsInput | string
-  carrito?: Prisma.CarritosUncheckedUpdateManyWithoutProductoNestedInput
   detallesPedido?: Prisma.Detalles_PedidosUncheckedUpdateManyWithoutProductoNestedInput
+  carrito?: Prisma.CarritosUncheckedUpdateManyWithoutProductoNestedInput
 }
 
 export type ProductosUncheckedUpdateManyWithoutAutorInput = {
@@ -1105,11 +1105,11 @@ export type ProductosUpdateWithoutEditorialInput = {
   nombre?: Prisma.StringFieldUpdateOperationsInput | string
   existencias?: Prisma.IntFieldUpdateOperationsInput | number
   fecha_publicacion?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  carrito?: Prisma.CarritosUpdateManyWithoutProductoNestedInput
-  detallesPedido?: Prisma.Detalles_PedidosUpdateManyWithoutProductoNestedInput
+  tipo?: Prisma.TiposUpdateOneRequiredWithoutProductosNestedInput
   autor?: Prisma.AutoresUpdateOneRequiredWithoutProductosNestedInput
   categoria?: Prisma.CategoriasUpdateOneRequiredWithoutProductosNestedInput
-  tipo?: Prisma.TiposUpdateOneRequiredWithoutProductosNestedInput
+  detallesPedido?: Prisma.Detalles_PedidosUpdateManyWithoutProductoNestedInput
+  carrito?: Prisma.CarritosUpdateManyWithoutProductoNestedInput
 }
 
 export type ProductosUncheckedUpdateWithoutEditorialInput = {
@@ -1120,8 +1120,8 @@ export type ProductosUncheckedUpdateWithoutEditorialInput = {
   id_tipo?: Prisma.StringFieldUpdateOperationsInput | string
   id_autor?: Prisma.StringFieldUpdateOperationsInput | string
   id_categoria?: Prisma.StringFieldUpdateOperationsInput | string
-  carrito?: Prisma.CarritosUncheckedUpdateManyWithoutProductoNestedInput
   detallesPedido?: Prisma.Detalles_PedidosUncheckedUpdateManyWithoutProductoNestedInput
+  carrito?: Prisma.CarritosUncheckedUpdateManyWithoutProductoNestedInput
 }
 
 export type ProductosUncheckedUpdateManyWithoutEditorialInput = {
@@ -1149,11 +1149,11 @@ export type ProductosUpdateWithoutTipoInput = {
   nombre?: Prisma.StringFieldUpdateOperationsInput | string
   existencias?: Prisma.IntFieldUpdateOperationsInput | number
   fecha_publicacion?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  carrito?: Prisma.CarritosUpdateManyWithoutProductoNestedInput
-  detallesPedido?: Prisma.Detalles_PedidosUpdateManyWithoutProductoNestedInput
   autor?: Prisma.AutoresUpdateOneRequiredWithoutProductosNestedInput
-  categoria?: Prisma.CategoriasUpdateOneRequiredWithoutProductosNestedInput
   editorial?: Prisma.EditorialesUpdateOneRequiredWithoutProductosNestedInput
+  categoria?: Prisma.CategoriasUpdateOneRequiredWithoutProductosNestedInput
+  detallesPedido?: Prisma.Detalles_PedidosUpdateManyWithoutProductoNestedInput
+  carrito?: Prisma.CarritosUpdateManyWithoutProductoNestedInput
 }
 
 export type ProductosUncheckedUpdateWithoutTipoInput = {
@@ -1164,8 +1164,8 @@ export type ProductosUncheckedUpdateWithoutTipoInput = {
   id_autor?: Prisma.StringFieldUpdateOperationsInput | string
   id_editorial?: Prisma.StringFieldUpdateOperationsInput | string
   id_categoria?: Prisma.StringFieldUpdateOperationsInput | string
-  carrito?: Prisma.CarritosUncheckedUpdateManyWithoutProductoNestedInput
   detallesPedido?: Prisma.Detalles_PedidosUncheckedUpdateManyWithoutProductoNestedInput
+  carrito?: Prisma.CarritosUncheckedUpdateManyWithoutProductoNestedInput
 }
 
 export type ProductosUncheckedUpdateManyWithoutTipoInput = {
@@ -1184,13 +1184,13 @@ export type ProductosUncheckedUpdateManyWithoutTipoInput = {
  */
 
 export type ProductosCountOutputType = {
-  carrito: number
   detallesPedido: number
+  carrito: number
 }
 
 export type ProductosCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  carrito?: boolean | ProductosCountOutputTypeCountCarritoArgs
   detallesPedido?: boolean | ProductosCountOutputTypeCountDetallesPedidoArgs
+  carrito?: boolean | ProductosCountOutputTypeCountCarritoArgs
 }
 
 /**
@@ -1206,15 +1206,15 @@ export type ProductosCountOutputTypeDefaultArgs<ExtArgs extends runtime.Types.Ex
 /**
  * ProductosCountOutputType without action
  */
-export type ProductosCountOutputTypeCountCarritoArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.CarritosWhereInput
+export type ProductosCountOutputTypeCountDetallesPedidoArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.Detalles_PedidosWhereInput
 }
 
 /**
  * ProductosCountOutputType without action
  */
-export type ProductosCountOutputTypeCountDetallesPedidoArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.Detalles_PedidosWhereInput
+export type ProductosCountOutputTypeCountCarritoArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.CarritosWhereInput
 }
 
 
@@ -1227,12 +1227,12 @@ export type ProductosSelect<ExtArgs extends runtime.Types.Extensions.InternalArg
   id_autor?: boolean
   id_editorial?: boolean
   id_categoria?: boolean
-  carrito?: boolean | Prisma.Productos$carritoArgs<ExtArgs>
-  detallesPedido?: boolean | Prisma.Productos$detallesPedidoArgs<ExtArgs>
-  autor?: boolean | Prisma.AutoresDefaultArgs<ExtArgs>
-  categoria?: boolean | Prisma.CategoriasDefaultArgs<ExtArgs>
-  editorial?: boolean | Prisma.EditorialesDefaultArgs<ExtArgs>
   tipo?: boolean | Prisma.TiposDefaultArgs<ExtArgs>
+  autor?: boolean | Prisma.AutoresDefaultArgs<ExtArgs>
+  editorial?: boolean | Prisma.EditorialesDefaultArgs<ExtArgs>
+  categoria?: boolean | Prisma.CategoriasDefaultArgs<ExtArgs>
+  detallesPedido?: boolean | Prisma.Productos$detallesPedidoArgs<ExtArgs>
+  carrito?: boolean | Prisma.Productos$carritoArgs<ExtArgs>
   _count?: boolean | Prisma.ProductosCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["productos"]>
 
@@ -1245,10 +1245,10 @@ export type ProductosSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Ext
   id_autor?: boolean
   id_editorial?: boolean
   id_categoria?: boolean
-  autor?: boolean | Prisma.AutoresDefaultArgs<ExtArgs>
-  categoria?: boolean | Prisma.CategoriasDefaultArgs<ExtArgs>
-  editorial?: boolean | Prisma.EditorialesDefaultArgs<ExtArgs>
   tipo?: boolean | Prisma.TiposDefaultArgs<ExtArgs>
+  autor?: boolean | Prisma.AutoresDefaultArgs<ExtArgs>
+  editorial?: boolean | Prisma.EditorialesDefaultArgs<ExtArgs>
+  categoria?: boolean | Prisma.CategoriasDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["productos"]>
 
 export type ProductosSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -1260,10 +1260,10 @@ export type ProductosSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Ext
   id_autor?: boolean
   id_editorial?: boolean
   id_categoria?: boolean
-  autor?: boolean | Prisma.AutoresDefaultArgs<ExtArgs>
-  categoria?: boolean | Prisma.CategoriasDefaultArgs<ExtArgs>
-  editorial?: boolean | Prisma.EditorialesDefaultArgs<ExtArgs>
   tipo?: boolean | Prisma.TiposDefaultArgs<ExtArgs>
+  autor?: boolean | Prisma.AutoresDefaultArgs<ExtArgs>
+  editorial?: boolean | Prisma.EditorialesDefaultArgs<ExtArgs>
+  categoria?: boolean | Prisma.CategoriasDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["productos"]>
 
 export type ProductosSelectScalar = {
@@ -1279,36 +1279,36 @@ export type ProductosSelectScalar = {
 
 export type ProductosOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "nombre" | "existencias" | "fecha_publicacion" | "id_tipo" | "id_autor" | "id_editorial" | "id_categoria", ExtArgs["result"]["productos"]>
 export type ProductosInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  carrito?: boolean | Prisma.Productos$carritoArgs<ExtArgs>
-  detallesPedido?: boolean | Prisma.Productos$detallesPedidoArgs<ExtArgs>
-  autor?: boolean | Prisma.AutoresDefaultArgs<ExtArgs>
-  categoria?: boolean | Prisma.CategoriasDefaultArgs<ExtArgs>
-  editorial?: boolean | Prisma.EditorialesDefaultArgs<ExtArgs>
   tipo?: boolean | Prisma.TiposDefaultArgs<ExtArgs>
+  autor?: boolean | Prisma.AutoresDefaultArgs<ExtArgs>
+  editorial?: boolean | Prisma.EditorialesDefaultArgs<ExtArgs>
+  categoria?: boolean | Prisma.CategoriasDefaultArgs<ExtArgs>
+  detallesPedido?: boolean | Prisma.Productos$detallesPedidoArgs<ExtArgs>
+  carrito?: boolean | Prisma.Productos$carritoArgs<ExtArgs>
   _count?: boolean | Prisma.ProductosCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type ProductosIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  autor?: boolean | Prisma.AutoresDefaultArgs<ExtArgs>
-  categoria?: boolean | Prisma.CategoriasDefaultArgs<ExtArgs>
-  editorial?: boolean | Prisma.EditorialesDefaultArgs<ExtArgs>
   tipo?: boolean | Prisma.TiposDefaultArgs<ExtArgs>
+  autor?: boolean | Prisma.AutoresDefaultArgs<ExtArgs>
+  editorial?: boolean | Prisma.EditorialesDefaultArgs<ExtArgs>
+  categoria?: boolean | Prisma.CategoriasDefaultArgs<ExtArgs>
 }
 export type ProductosIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  autor?: boolean | Prisma.AutoresDefaultArgs<ExtArgs>
-  categoria?: boolean | Prisma.CategoriasDefaultArgs<ExtArgs>
-  editorial?: boolean | Prisma.EditorialesDefaultArgs<ExtArgs>
   tipo?: boolean | Prisma.TiposDefaultArgs<ExtArgs>
+  autor?: boolean | Prisma.AutoresDefaultArgs<ExtArgs>
+  editorial?: boolean | Prisma.EditorialesDefaultArgs<ExtArgs>
+  categoria?: boolean | Prisma.CategoriasDefaultArgs<ExtArgs>
 }
 
 export type $ProductosPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "Productos"
   objects: {
-    carrito: Prisma.$CarritosPayload<ExtArgs>[]
-    detallesPedido: Prisma.$Detalles_PedidosPayload<ExtArgs>[]
-    autor: Prisma.$AutoresPayload<ExtArgs>
-    categoria: Prisma.$CategoriasPayload<ExtArgs>
-    editorial: Prisma.$EditorialesPayload<ExtArgs>
     tipo: Prisma.$TiposPayload<ExtArgs>
+    autor: Prisma.$AutoresPayload<ExtArgs>
+    editorial: Prisma.$EditorialesPayload<ExtArgs>
+    categoria: Prisma.$CategoriasPayload<ExtArgs>
+    detallesPedido: Prisma.$Detalles_PedidosPayload<ExtArgs>[]
+    carrito: Prisma.$CarritosPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -1713,12 +1713,12 @@ readonly fields: ProductosFieldRefs;
  */
 export interface Prisma__ProductosClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
-  carrito<T extends Prisma.Productos$carritoArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Productos$carritoArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$CarritosPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-  detallesPedido<T extends Prisma.Productos$detallesPedidoArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Productos$detallesPedidoArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$Detalles_PedidosPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-  autor<T extends Prisma.AutoresDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.AutoresDefaultArgs<ExtArgs>>): Prisma.Prisma__AutoresClient<runtime.Types.Result.GetResult<Prisma.$AutoresPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-  categoria<T extends Prisma.CategoriasDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.CategoriasDefaultArgs<ExtArgs>>): Prisma.Prisma__CategoriasClient<runtime.Types.Result.GetResult<Prisma.$CategoriasPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-  editorial<T extends Prisma.EditorialesDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.EditorialesDefaultArgs<ExtArgs>>): Prisma.Prisma__EditorialesClient<runtime.Types.Result.GetResult<Prisma.$EditorialesPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   tipo<T extends Prisma.TiposDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.TiposDefaultArgs<ExtArgs>>): Prisma.Prisma__TiposClient<runtime.Types.Result.GetResult<Prisma.$TiposPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+  autor<T extends Prisma.AutoresDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.AutoresDefaultArgs<ExtArgs>>): Prisma.Prisma__AutoresClient<runtime.Types.Result.GetResult<Prisma.$AutoresPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+  editorial<T extends Prisma.EditorialesDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.EditorialesDefaultArgs<ExtArgs>>): Prisma.Prisma__EditorialesClient<runtime.Types.Result.GetResult<Prisma.$EditorialesPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+  categoria<T extends Prisma.CategoriasDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.CategoriasDefaultArgs<ExtArgs>>): Prisma.Prisma__CategoriasClient<runtime.Types.Result.GetResult<Prisma.$CategoriasPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+  detallesPedido<T extends Prisma.Productos$detallesPedidoArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Productos$detallesPedidoArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$Detalles_PedidosPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  carrito<T extends Prisma.Productos$carritoArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Productos$carritoArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$CarritosPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2157,30 +2157,6 @@ export type ProductosDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.Int
 }
 
 /**
- * Productos.carrito
- */
-export type Productos$carritoArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  /**
-   * Select specific fields to fetch from the Carritos
-   */
-  select?: Prisma.CarritosSelect<ExtArgs> | null
-  /**
-   * Omit specific fields from the Carritos
-   */
-  omit?: Prisma.CarritosOmit<ExtArgs> | null
-  /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.CarritosInclude<ExtArgs> | null
-  where?: Prisma.CarritosWhereInput
-  orderBy?: Prisma.CarritosOrderByWithRelationInput | Prisma.CarritosOrderByWithRelationInput[]
-  cursor?: Prisma.CarritosWhereUniqueInput
-  take?: number
-  skip?: number
-  distinct?: Prisma.CarritosScalarFieldEnum | Prisma.CarritosScalarFieldEnum[]
-}
-
-/**
  * Productos.detallesPedido
  */
 export type Productos$detallesPedidoArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -2202,6 +2178,30 @@ export type Productos$detallesPedidoArgs<ExtArgs extends runtime.Types.Extension
   take?: number
   skip?: number
   distinct?: Prisma.Detalles_PedidosScalarFieldEnum | Prisma.Detalles_PedidosScalarFieldEnum[]
+}
+
+/**
+ * Productos.carrito
+ */
+export type Productos$carritoArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Carritos
+   */
+  select?: Prisma.CarritosSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Carritos
+   */
+  omit?: Prisma.CarritosOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.CarritosInclude<ExtArgs> | null
+  where?: Prisma.CarritosWhereInput
+  orderBy?: Prisma.CarritosOrderByWithRelationInput | Prisma.CarritosOrderByWithRelationInput[]
+  cursor?: Prisma.CarritosWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.CarritosScalarFieldEnum | Prisma.CarritosScalarFieldEnum[]
 }
 
 /**

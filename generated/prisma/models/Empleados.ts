@@ -208,16 +208,16 @@ export type EmpleadosOrderByWithRelationInput = {
 export type EmpleadosWhereUniqueInput = Prisma.AtLeast<{
   id?: string
   id_usuario?: string
+  cedula?: string
   AND?: Prisma.EmpleadosWhereInput | Prisma.EmpleadosWhereInput[]
   OR?: Prisma.EmpleadosWhereInput[]
   NOT?: Prisma.EmpleadosWhereInput | Prisma.EmpleadosWhereInput[]
-  cedula?: Prisma.StringFilter<"Empleados"> | string
   nombre?: Prisma.StringFilter<"Empleados"> | string
   activo?: Prisma.BoolFilter<"Empleados"> | boolean
   fecha_terminacion?: Prisma.DateTimeNullableFilter<"Empleados"> | Date | string | null
   usuario?: Prisma.XOR<Prisma.UsuariosScalarRelationFilter, Prisma.UsuariosWhereInput>
   pedidos?: Prisma.PedidosListRelationFilter
-}, "id" | "id_usuario">
+}, "id" | "id_usuario" | "cedula">
 
 export type EmpleadosOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
