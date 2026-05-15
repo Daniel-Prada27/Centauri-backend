@@ -14,7 +14,7 @@ export const login = async (req, res, next) => {
 export const registro = async (req, res, next) => {
     try {
         const user = await accountService.registro(req.body);
-        req.session.user = user;
+        req.session.user = user.data;
         res.status(200).json(user);
     } catch (error) {
         next(error);

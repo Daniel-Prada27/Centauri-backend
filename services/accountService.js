@@ -11,7 +11,10 @@ export const login = async (data) => {
 
     // Buscar usuario por correo
     const usuarioEncontrado = await prisma.usuarios.findFirst({
-        where: { correo }
+        where: { correo },
+        include: {
+            cliente: true
+        }
     });
 
     if (!usuarioEncontrado) {
@@ -27,6 +30,7 @@ export const login = async (data) => {
 
     let user =  {
         id: usuarioEncontrado.id,
+        id_cliente: usuarioEncontrado.cliente?.id,
         usuario: usuarioEncontrado.usuario,
         correo: usuarioEncontrado.correo
     };
@@ -39,8 +43,8 @@ export const registro = async (data) => {
     const { usuario, clave, correo, cedula, nombre, direccion } = data;
 
     // Validación básica
-    if (!usuario || !clave || !correo) {
-        throw new AppError('Usuario, correo y clave son obligatorios', 400);
+    if (!usuario || !clave || !correo || !cedula || !nombre || !direccion) {
+        throw new AppError('Usuario, correo, clave, cedula, nombre y direccion son obligatorios', 400);
     }
 
     // Verificar si el usuario ya existe
@@ -50,6 +54,16 @@ export const registro = async (data) => {
 
     if (usuarioExiste) {
         throw new AppError('Ya existe una cuenta con este correo', 400);
+    }
+
+    const clienteExiste = await prisma.clientes.findFirst({
+        where: {
+            cedula
+        }
+    });
+
+    if (clienteExiste) {
+        throw new AppError('Ya existe un cliente con esta cedula', 400);
     }
 
     // Encriptar clave
@@ -82,6 +96,11 @@ export const registro = async (data) => {
 
     return {
         mensaje: 'Usuario registrado exitosamente',
-        data: resultado
+        data: {
+            id: resultado.nuevoUsuario.id,
+            id_cliente: resultado.nuevoCliente.id,
+            usuario: resultado.nuevoUsuario.usuario,
+            correo: resultado.nuevoUsuario.correo
+        }
     };
 };
