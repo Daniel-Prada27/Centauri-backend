@@ -20,40 +20,64 @@ export type CarritosModel = runtime.Types.Result.DefaultSelection<Prisma.$Carrit
 
 export type AggregateCarritos = {
   _count: CarritosCountAggregateOutputType | null
+  _avg: CarritosAvgAggregateOutputType | null
+  _sum: CarritosSumAggregateOutputType | null
   _min: CarritosMinAggregateOutputType | null
   _max: CarritosMaxAggregateOutputType | null
+}
+
+export type CarritosAvgAggregateOutputType = {
+  cantidad: number | null
+}
+
+export type CarritosSumAggregateOutputType = {
+  cantidad: number | null
 }
 
 export type CarritosMinAggregateOutputType = {
   id_cliente: string | null
   id_producto: string | null
+  cantidad: number | null
 }
 
 export type CarritosMaxAggregateOutputType = {
   id_cliente: string | null
   id_producto: string | null
+  cantidad: number | null
 }
 
 export type CarritosCountAggregateOutputType = {
   id_cliente: number
   id_producto: number
+  cantidad: number
   _all: number
 }
 
 
+export type CarritosAvgAggregateInputType = {
+  cantidad?: true
+}
+
+export type CarritosSumAggregateInputType = {
+  cantidad?: true
+}
+
 export type CarritosMinAggregateInputType = {
   id_cliente?: true
   id_producto?: true
+  cantidad?: true
 }
 
 export type CarritosMaxAggregateInputType = {
   id_cliente?: true
   id_producto?: true
+  cantidad?: true
 }
 
 export type CarritosCountAggregateInputType = {
   id_cliente?: true
   id_producto?: true
+  cantidad?: true
   _all?: true
 }
 
@@ -95,6 +119,18 @@ export type CarritosAggregateArgs<ExtArgs extends runtime.Types.Extensions.Inter
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
    * 
+   * Select which fields to average
+  **/
+  _avg?: CarritosAvgAggregateInputType
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+   * 
+   * Select which fields to sum
+  **/
+  _sum?: CarritosSumAggregateInputType
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+   * 
    * Select which fields to find the minimum value
   **/
   _min?: CarritosMinAggregateInputType
@@ -125,6 +161,8 @@ export type CarritosGroupByArgs<ExtArgs extends runtime.Types.Extensions.Interna
   take?: number
   skip?: number
   _count?: CarritosCountAggregateInputType | true
+  _avg?: CarritosAvgAggregateInputType
+  _sum?: CarritosSumAggregateInputType
   _min?: CarritosMinAggregateInputType
   _max?: CarritosMaxAggregateInputType
 }
@@ -132,7 +170,10 @@ export type CarritosGroupByArgs<ExtArgs extends runtime.Types.Extensions.Interna
 export type CarritosGroupByOutputType = {
   id_cliente: string
   id_producto: string
+  cantidad: number
   _count: CarritosCountAggregateOutputType | null
+  _avg: CarritosAvgAggregateOutputType | null
+  _sum: CarritosSumAggregateOutputType | null
   _min: CarritosMinAggregateOutputType | null
   _max: CarritosMaxAggregateOutputType | null
 }
@@ -158,6 +199,7 @@ export type CarritosWhereInput = {
   NOT?: Prisma.CarritosWhereInput | Prisma.CarritosWhereInput[]
   id_cliente?: Prisma.UuidFilter<"Carritos"> | string
   id_producto?: Prisma.UuidFilter<"Carritos"> | string
+  cantidad?: Prisma.IntFilter<"Carritos"> | number
   cliente?: Prisma.XOR<Prisma.ClientesScalarRelationFilter, Prisma.ClientesWhereInput>
   producto?: Prisma.XOR<Prisma.ProductosScalarRelationFilter, Prisma.ProductosWhereInput>
 }
@@ -165,6 +207,7 @@ export type CarritosWhereInput = {
 export type CarritosOrderByWithRelationInput = {
   id_cliente?: Prisma.SortOrder
   id_producto?: Prisma.SortOrder
+  cantidad?: Prisma.SortOrder
   cliente?: Prisma.ClientesOrderByWithRelationInput
   producto?: Prisma.ProductosOrderByWithRelationInput
 }
@@ -176,6 +219,7 @@ export type CarritosWhereUniqueInput = Prisma.AtLeast<{
   NOT?: Prisma.CarritosWhereInput | Prisma.CarritosWhereInput[]
   id_cliente?: Prisma.UuidFilter<"Carritos"> | string
   id_producto?: Prisma.UuidFilter<"Carritos"> | string
+  cantidad?: Prisma.IntFilter<"Carritos"> | number
   cliente?: Prisma.XOR<Prisma.ClientesScalarRelationFilter, Prisma.ClientesWhereInput>
   producto?: Prisma.XOR<Prisma.ProductosScalarRelationFilter, Prisma.ProductosWhereInput>
 }, "id_cliente_id_producto">
@@ -183,9 +227,12 @@ export type CarritosWhereUniqueInput = Prisma.AtLeast<{
 export type CarritosOrderByWithAggregationInput = {
   id_cliente?: Prisma.SortOrder
   id_producto?: Prisma.SortOrder
+  cantidad?: Prisma.SortOrder
   _count?: Prisma.CarritosCountOrderByAggregateInput
+  _avg?: Prisma.CarritosAvgOrderByAggregateInput
   _max?: Prisma.CarritosMaxOrderByAggregateInput
   _min?: Prisma.CarritosMinOrderByAggregateInput
+  _sum?: Prisma.CarritosSumOrderByAggregateInput
 }
 
 export type CarritosScalarWhereWithAggregatesInput = {
@@ -194,9 +241,11 @@ export type CarritosScalarWhereWithAggregatesInput = {
   NOT?: Prisma.CarritosScalarWhereWithAggregatesInput | Prisma.CarritosScalarWhereWithAggregatesInput[]
   id_cliente?: Prisma.UuidWithAggregatesFilter<"Carritos"> | string
   id_producto?: Prisma.UuidWithAggregatesFilter<"Carritos"> | string
+  cantidad?: Prisma.IntWithAggregatesFilter<"Carritos"> | number
 }
 
 export type CarritosCreateInput = {
+  cantidad?: number
   cliente: Prisma.ClientesCreateNestedOneWithoutCarritosInput
   producto: Prisma.ProductosCreateNestedOneWithoutCarritoInput
 }
@@ -204,9 +253,11 @@ export type CarritosCreateInput = {
 export type CarritosUncheckedCreateInput = {
   id_cliente: string
   id_producto: string
+  cantidad?: number
 }
 
 export type CarritosUpdateInput = {
+  cantidad?: Prisma.IntFieldUpdateOperationsInput | number
   cliente?: Prisma.ClientesUpdateOneRequiredWithoutCarritosNestedInput
   producto?: Prisma.ProductosUpdateOneRequiredWithoutCarritoNestedInput
 }
@@ -214,20 +265,23 @@ export type CarritosUpdateInput = {
 export type CarritosUncheckedUpdateInput = {
   id_cliente?: Prisma.StringFieldUpdateOperationsInput | string
   id_producto?: Prisma.StringFieldUpdateOperationsInput | string
+  cantidad?: Prisma.IntFieldUpdateOperationsInput | number
 }
 
 export type CarritosCreateManyInput = {
   id_cliente: string
   id_producto: string
+  cantidad?: number
 }
 
 export type CarritosUpdateManyMutationInput = {
-
+  cantidad?: Prisma.IntFieldUpdateOperationsInput | number
 }
 
 export type CarritosUncheckedUpdateManyInput = {
   id_cliente?: Prisma.StringFieldUpdateOperationsInput | string
   id_producto?: Prisma.StringFieldUpdateOperationsInput | string
+  cantidad?: Prisma.IntFieldUpdateOperationsInput | number
 }
 
 export type CarritosListRelationFilter = {
@@ -248,16 +302,27 @@ export type CarritosId_clienteId_productoCompoundUniqueInput = {
 export type CarritosCountOrderByAggregateInput = {
   id_cliente?: Prisma.SortOrder
   id_producto?: Prisma.SortOrder
+  cantidad?: Prisma.SortOrder
+}
+
+export type CarritosAvgOrderByAggregateInput = {
+  cantidad?: Prisma.SortOrder
 }
 
 export type CarritosMaxOrderByAggregateInput = {
   id_cliente?: Prisma.SortOrder
   id_producto?: Prisma.SortOrder
+  cantidad?: Prisma.SortOrder
 }
 
 export type CarritosMinOrderByAggregateInput = {
   id_cliente?: Prisma.SortOrder
   id_producto?: Prisma.SortOrder
+  cantidad?: Prisma.SortOrder
+}
+
+export type CarritosSumOrderByAggregateInput = {
+  cantidad?: Prisma.SortOrder
 }
 
 export type CarritosCreateNestedManyWithoutProductoInput = {
@@ -345,11 +410,13 @@ export type CarritosUncheckedUpdateManyWithoutClienteNestedInput = {
 }
 
 export type CarritosCreateWithoutProductoInput = {
+  cantidad?: number
   cliente: Prisma.ClientesCreateNestedOneWithoutCarritosInput
 }
 
 export type CarritosUncheckedCreateWithoutProductoInput = {
   id_cliente: string
+  cantidad?: number
 }
 
 export type CarritosCreateOrConnectWithoutProductoInput = {
@@ -384,14 +451,17 @@ export type CarritosScalarWhereInput = {
   NOT?: Prisma.CarritosScalarWhereInput | Prisma.CarritosScalarWhereInput[]
   id_cliente?: Prisma.UuidFilter<"Carritos"> | string
   id_producto?: Prisma.UuidFilter<"Carritos"> | string
+  cantidad?: Prisma.IntFilter<"Carritos"> | number
 }
 
 export type CarritosCreateWithoutClienteInput = {
+  cantidad?: number
   producto: Prisma.ProductosCreateNestedOneWithoutCarritoInput
 }
 
 export type CarritosUncheckedCreateWithoutClienteInput = {
   id_producto: string
+  cantidad?: number
 }
 
 export type CarritosCreateOrConnectWithoutClienteInput = {
@@ -422,34 +492,42 @@ export type CarritosUpdateManyWithWhereWithoutClienteInput = {
 
 export type CarritosCreateManyProductoInput = {
   id_cliente: string
+  cantidad?: number
 }
 
 export type CarritosUpdateWithoutProductoInput = {
+  cantidad?: Prisma.IntFieldUpdateOperationsInput | number
   cliente?: Prisma.ClientesUpdateOneRequiredWithoutCarritosNestedInput
 }
 
 export type CarritosUncheckedUpdateWithoutProductoInput = {
   id_cliente?: Prisma.StringFieldUpdateOperationsInput | string
+  cantidad?: Prisma.IntFieldUpdateOperationsInput | number
 }
 
 export type CarritosUncheckedUpdateManyWithoutProductoInput = {
   id_cliente?: Prisma.StringFieldUpdateOperationsInput | string
+  cantidad?: Prisma.IntFieldUpdateOperationsInput | number
 }
 
 export type CarritosCreateManyClienteInput = {
   id_producto: string
+  cantidad?: number
 }
 
 export type CarritosUpdateWithoutClienteInput = {
+  cantidad?: Prisma.IntFieldUpdateOperationsInput | number
   producto?: Prisma.ProductosUpdateOneRequiredWithoutCarritoNestedInput
 }
 
 export type CarritosUncheckedUpdateWithoutClienteInput = {
   id_producto?: Prisma.StringFieldUpdateOperationsInput | string
+  cantidad?: Prisma.IntFieldUpdateOperationsInput | number
 }
 
 export type CarritosUncheckedUpdateManyWithoutClienteInput = {
   id_producto?: Prisma.StringFieldUpdateOperationsInput | string
+  cantidad?: Prisma.IntFieldUpdateOperationsInput | number
 }
 
 
@@ -457,6 +535,7 @@ export type CarritosUncheckedUpdateManyWithoutClienteInput = {
 export type CarritosSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id_cliente?: boolean
   id_producto?: boolean
+  cantidad?: boolean
   cliente?: boolean | Prisma.ClientesDefaultArgs<ExtArgs>
   producto?: boolean | Prisma.ProductosDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["carritos"]>
@@ -464,6 +543,7 @@ export type CarritosSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs
 export type CarritosSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id_cliente?: boolean
   id_producto?: boolean
+  cantidad?: boolean
   cliente?: boolean | Prisma.ClientesDefaultArgs<ExtArgs>
   producto?: boolean | Prisma.ProductosDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["carritos"]>
@@ -471,6 +551,7 @@ export type CarritosSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Exte
 export type CarritosSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id_cliente?: boolean
   id_producto?: boolean
+  cantidad?: boolean
   cliente?: boolean | Prisma.ClientesDefaultArgs<ExtArgs>
   producto?: boolean | Prisma.ProductosDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["carritos"]>
@@ -478,9 +559,10 @@ export type CarritosSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Exte
 export type CarritosSelectScalar = {
   id_cliente?: boolean
   id_producto?: boolean
+  cantidad?: boolean
 }
 
-export type CarritosOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id_cliente" | "id_producto", ExtArgs["result"]["carritos"]>
+export type CarritosOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id_cliente" | "id_producto" | "cantidad", ExtArgs["result"]["carritos"]>
 export type CarritosInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   cliente?: boolean | Prisma.ClientesDefaultArgs<ExtArgs>
   producto?: boolean | Prisma.ProductosDefaultArgs<ExtArgs>
@@ -503,6 +585,7 @@ export type $CarritosPayload<ExtArgs extends runtime.Types.Extensions.InternalAr
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id_cliente: string
     id_producto: string
+    cantidad: number
   }, ExtArgs["result"]["carritos"]>
   composites: {}
 }
@@ -930,6 +1013,7 @@ export interface Prisma__CarritosClient<T, Null = never, ExtArgs extends runtime
 export interface CarritosFieldRefs {
   readonly id_cliente: Prisma.FieldRef<"Carritos", 'String'>
   readonly id_producto: Prisma.FieldRef<"Carritos", 'String'>
+  readonly cantidad: Prisma.FieldRef<"Carritos", 'Int'>
 }
     
 

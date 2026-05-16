@@ -198,9 +198,9 @@ export type ClientesWhereInput = {
   direccion?: Prisma.StringFilter<"Clientes"> | string
   activo?: Prisma.BoolFilter<"Clientes"> | boolean
   fecha_eliminacion?: Prisma.DateTimeNullableFilter<"Clientes"> | Date | string | null
+  carritos?: Prisma.CarritosListRelationFilter
   usuario?: Prisma.XOR<Prisma.UsuariosScalarRelationFilter, Prisma.UsuariosWhereInput>
   pedidos?: Prisma.PedidosListRelationFilter
-  carritos?: Prisma.CarritosListRelationFilter
 }
 
 export type ClientesOrderByWithRelationInput = {
@@ -211,9 +211,9 @@ export type ClientesOrderByWithRelationInput = {
   direccion?: Prisma.SortOrder
   activo?: Prisma.SortOrder
   fecha_eliminacion?: Prisma.SortOrderInput | Prisma.SortOrder
+  carritos?: Prisma.CarritosOrderByRelationAggregateInput
   usuario?: Prisma.UsuariosOrderByWithRelationInput
   pedidos?: Prisma.PedidosOrderByRelationAggregateInput
-  carritos?: Prisma.CarritosOrderByRelationAggregateInput
 }
 
 export type ClientesWhereUniqueInput = Prisma.AtLeast<{
@@ -227,9 +227,9 @@ export type ClientesWhereUniqueInput = Prisma.AtLeast<{
   direccion?: Prisma.StringFilter<"Clientes"> | string
   activo?: Prisma.BoolFilter<"Clientes"> | boolean
   fecha_eliminacion?: Prisma.DateTimeNullableFilter<"Clientes"> | Date | string | null
+  carritos?: Prisma.CarritosListRelationFilter
   usuario?: Prisma.XOR<Prisma.UsuariosScalarRelationFilter, Prisma.UsuariosWhereInput>
   pedidos?: Prisma.PedidosListRelationFilter
-  carritos?: Prisma.CarritosListRelationFilter
 }, "id" | "id_usuario" | "cedula">
 
 export type ClientesOrderByWithAggregationInput = {
@@ -265,9 +265,9 @@ export type ClientesCreateInput = {
   direccion: string
   activo: boolean
   fecha_eliminacion?: Date | string | null
+  carritos?: Prisma.CarritosCreateNestedManyWithoutClienteInput
   usuario: Prisma.UsuariosCreateNestedOneWithoutClienteInput
   pedidos?: Prisma.PedidosCreateNestedManyWithoutClienteInput
-  carritos?: Prisma.CarritosCreateNestedManyWithoutClienteInput
 }
 
 export type ClientesUncheckedCreateInput = {
@@ -278,8 +278,8 @@ export type ClientesUncheckedCreateInput = {
   direccion: string
   activo: boolean
   fecha_eliminacion?: Date | string | null
-  pedidos?: Prisma.PedidosUncheckedCreateNestedManyWithoutClienteInput
   carritos?: Prisma.CarritosUncheckedCreateNestedManyWithoutClienteInput
+  pedidos?: Prisma.PedidosUncheckedCreateNestedManyWithoutClienteInput
 }
 
 export type ClientesUpdateInput = {
@@ -289,9 +289,9 @@ export type ClientesUpdateInput = {
   direccion?: Prisma.StringFieldUpdateOperationsInput | string
   activo?: Prisma.BoolFieldUpdateOperationsInput | boolean
   fecha_eliminacion?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  carritos?: Prisma.CarritosUpdateManyWithoutClienteNestedInput
   usuario?: Prisma.UsuariosUpdateOneRequiredWithoutClienteNestedInput
   pedidos?: Prisma.PedidosUpdateManyWithoutClienteNestedInput
-  carritos?: Prisma.CarritosUpdateManyWithoutClienteNestedInput
 }
 
 export type ClientesUncheckedUpdateInput = {
@@ -302,8 +302,8 @@ export type ClientesUncheckedUpdateInput = {
   direccion?: Prisma.StringFieldUpdateOperationsInput | string
   activo?: Prisma.BoolFieldUpdateOperationsInput | boolean
   fecha_eliminacion?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  pedidos?: Prisma.PedidosUncheckedUpdateManyWithoutClienteNestedInput
   carritos?: Prisma.CarritosUncheckedUpdateManyWithoutClienteNestedInput
+  pedidos?: Prisma.PedidosUncheckedUpdateManyWithoutClienteNestedInput
 }
 
 export type ClientesCreateManyInput = {
@@ -450,8 +450,8 @@ export type ClientesCreateWithoutUsuarioInput = {
   direccion: string
   activo: boolean
   fecha_eliminacion?: Date | string | null
-  pedidos?: Prisma.PedidosCreateNestedManyWithoutClienteInput
   carritos?: Prisma.CarritosCreateNestedManyWithoutClienteInput
+  pedidos?: Prisma.PedidosCreateNestedManyWithoutClienteInput
 }
 
 export type ClientesUncheckedCreateWithoutUsuarioInput = {
@@ -461,8 +461,8 @@ export type ClientesUncheckedCreateWithoutUsuarioInput = {
   direccion: string
   activo: boolean
   fecha_eliminacion?: Date | string | null
-  pedidos?: Prisma.PedidosUncheckedCreateNestedManyWithoutClienteInput
   carritos?: Prisma.CarritosUncheckedCreateNestedManyWithoutClienteInput
+  pedidos?: Prisma.PedidosUncheckedCreateNestedManyWithoutClienteInput
 }
 
 export type ClientesCreateOrConnectWithoutUsuarioInput = {
@@ -488,8 +488,8 @@ export type ClientesUpdateWithoutUsuarioInput = {
   direccion?: Prisma.StringFieldUpdateOperationsInput | string
   activo?: Prisma.BoolFieldUpdateOperationsInput | boolean
   fecha_eliminacion?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  pedidos?: Prisma.PedidosUpdateManyWithoutClienteNestedInput
   carritos?: Prisma.CarritosUpdateManyWithoutClienteNestedInput
+  pedidos?: Prisma.PedidosUpdateManyWithoutClienteNestedInput
 }
 
 export type ClientesUncheckedUpdateWithoutUsuarioInput = {
@@ -499,8 +499,8 @@ export type ClientesUncheckedUpdateWithoutUsuarioInput = {
   direccion?: Prisma.StringFieldUpdateOperationsInput | string
   activo?: Prisma.BoolFieldUpdateOperationsInput | boolean
   fecha_eliminacion?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  pedidos?: Prisma.PedidosUncheckedUpdateManyWithoutClienteNestedInput
   carritos?: Prisma.CarritosUncheckedUpdateManyWithoutClienteNestedInput
+  pedidos?: Prisma.PedidosUncheckedUpdateManyWithoutClienteNestedInput
 }
 
 export type ClientesCreateWithoutPedidosInput = {
@@ -510,8 +510,8 @@ export type ClientesCreateWithoutPedidosInput = {
   direccion: string
   activo: boolean
   fecha_eliminacion?: Date | string | null
-  usuario: Prisma.UsuariosCreateNestedOneWithoutClienteInput
   carritos?: Prisma.CarritosCreateNestedManyWithoutClienteInput
+  usuario: Prisma.UsuariosCreateNestedOneWithoutClienteInput
 }
 
 export type ClientesUncheckedCreateWithoutPedidosInput = {
@@ -548,8 +548,8 @@ export type ClientesUpdateWithoutPedidosInput = {
   direccion?: Prisma.StringFieldUpdateOperationsInput | string
   activo?: Prisma.BoolFieldUpdateOperationsInput | boolean
   fecha_eliminacion?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  usuario?: Prisma.UsuariosUpdateOneRequiredWithoutClienteNestedInput
   carritos?: Prisma.CarritosUpdateManyWithoutClienteNestedInput
+  usuario?: Prisma.UsuariosUpdateOneRequiredWithoutClienteNestedInput
 }
 
 export type ClientesUncheckedUpdateWithoutPedidosInput = {
@@ -629,13 +629,13 @@ export type ClientesUncheckedUpdateWithoutCarritosInput = {
  */
 
 export type ClientesCountOutputType = {
-  pedidos: number
   carritos: number
+  pedidos: number
 }
 
 export type ClientesCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  pedidos?: boolean | ClientesCountOutputTypeCountPedidosArgs
   carritos?: boolean | ClientesCountOutputTypeCountCarritosArgs
+  pedidos?: boolean | ClientesCountOutputTypeCountPedidosArgs
 }
 
 /**
@@ -651,15 +651,15 @@ export type ClientesCountOutputTypeDefaultArgs<ExtArgs extends runtime.Types.Ext
 /**
  * ClientesCountOutputType without action
  */
-export type ClientesCountOutputTypeCountPedidosArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.PedidosWhereInput
+export type ClientesCountOutputTypeCountCarritosArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.CarritosWhereInput
 }
 
 /**
  * ClientesCountOutputType without action
  */
-export type ClientesCountOutputTypeCountCarritosArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.CarritosWhereInput
+export type ClientesCountOutputTypeCountPedidosArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.PedidosWhereInput
 }
 
 
@@ -671,9 +671,9 @@ export type ClientesSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs
   direccion?: boolean
   activo?: boolean
   fecha_eliminacion?: boolean
+  carritos?: boolean | Prisma.Clientes$carritosArgs<ExtArgs>
   usuario?: boolean | Prisma.UsuariosDefaultArgs<ExtArgs>
   pedidos?: boolean | Prisma.Clientes$pedidosArgs<ExtArgs>
-  carritos?: boolean | Prisma.Clientes$carritosArgs<ExtArgs>
   _count?: boolean | Prisma.ClientesCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["clientes"]>
 
@@ -711,9 +711,9 @@ export type ClientesSelectScalar = {
 
 export type ClientesOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "id_usuario" | "cedula" | "nombre" | "direccion" | "activo" | "fecha_eliminacion", ExtArgs["result"]["clientes"]>
 export type ClientesInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  carritos?: boolean | Prisma.Clientes$carritosArgs<ExtArgs>
   usuario?: boolean | Prisma.UsuariosDefaultArgs<ExtArgs>
   pedidos?: boolean | Prisma.Clientes$pedidosArgs<ExtArgs>
-  carritos?: boolean | Prisma.Clientes$carritosArgs<ExtArgs>
   _count?: boolean | Prisma.ClientesCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type ClientesIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -726,9 +726,9 @@ export type ClientesIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Ext
 export type $ClientesPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "Clientes"
   objects: {
+    carritos: Prisma.$CarritosPayload<ExtArgs>[]
     usuario: Prisma.$UsuariosPayload<ExtArgs>
     pedidos: Prisma.$PedidosPayload<ExtArgs>[]
-    carritos: Prisma.$CarritosPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -1132,9 +1132,9 @@ readonly fields: ClientesFieldRefs;
  */
 export interface Prisma__ClientesClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
+  carritos<T extends Prisma.Clientes$carritosArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Clientes$carritosArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$CarritosPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   usuario<T extends Prisma.UsuariosDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.UsuariosDefaultArgs<ExtArgs>>): Prisma.Prisma__UsuariosClient<runtime.Types.Result.GetResult<Prisma.$UsuariosPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   pedidos<T extends Prisma.Clientes$pedidosArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Clientes$pedidosArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$PedidosPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-  carritos<T extends Prisma.Clientes$carritosArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Clientes$carritosArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$CarritosPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1572,30 +1572,6 @@ export type ClientesDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.Inte
 }
 
 /**
- * Clientes.pedidos
- */
-export type Clientes$pedidosArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  /**
-   * Select specific fields to fetch from the Pedidos
-   */
-  select?: Prisma.PedidosSelect<ExtArgs> | null
-  /**
-   * Omit specific fields from the Pedidos
-   */
-  omit?: Prisma.PedidosOmit<ExtArgs> | null
-  /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.PedidosInclude<ExtArgs> | null
-  where?: Prisma.PedidosWhereInput
-  orderBy?: Prisma.PedidosOrderByWithRelationInput | Prisma.PedidosOrderByWithRelationInput[]
-  cursor?: Prisma.PedidosWhereUniqueInput
-  take?: number
-  skip?: number
-  distinct?: Prisma.PedidosScalarFieldEnum | Prisma.PedidosScalarFieldEnum[]
-}
-
-/**
  * Clientes.carritos
  */
 export type Clientes$carritosArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -1617,6 +1593,30 @@ export type Clientes$carritosArgs<ExtArgs extends runtime.Types.Extensions.Inter
   take?: number
   skip?: number
   distinct?: Prisma.CarritosScalarFieldEnum | Prisma.CarritosScalarFieldEnum[]
+}
+
+/**
+ * Clientes.pedidos
+ */
+export type Clientes$pedidosArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Pedidos
+   */
+  select?: Prisma.PedidosSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Pedidos
+   */
+  omit?: Prisma.PedidosOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.PedidosInclude<ExtArgs> | null
+  where?: Prisma.PedidosWhereInput
+  orderBy?: Prisma.PedidosOrderByWithRelationInput | Prisma.PedidosOrderByWithRelationInput[]
+  cursor?: Prisma.PedidosWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.PedidosScalarFieldEnum | Prisma.PedidosScalarFieldEnum[]
 }
 
 /**

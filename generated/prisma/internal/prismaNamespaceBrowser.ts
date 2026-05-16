@@ -116,13 +116,13 @@ export type TiposScalarFieldEnum = (typeof TiposScalarFieldEnum)[keyof typeof Ti
 export const ProductosScalarFieldEnum = {
   id: 'id',
   nombre: 'nombre',
-  imagen: 'imagen',
   existencias: 'existencias',
   fecha_publicacion: 'fecha_publicacion',
   id_tipo: 'id_tipo',
   id_autor: 'id_autor',
   id_editorial: 'id_editorial',
-  id_categoria: 'id_categoria'
+  id_categoria: 'id_categoria',
+  imagen: 'imagen'
 } as const
 
 export type ProductosScalarFieldEnum = (typeof ProductosScalarFieldEnum)[keyof typeof ProductosScalarFieldEnum]
@@ -196,7 +196,8 @@ export type Detalles_PedidosScalarFieldEnum = (typeof Detalles_PedidosScalarFiel
 
 export const CarritosScalarFieldEnum = {
   id_cliente: 'id_cliente',
-  id_producto: 'id_producto'
+  id_producto: 'id_producto',
+  cantidad: 'cantidad'
 } as const
 
 export type CarritosScalarFieldEnum = (typeof CarritosScalarFieldEnum)[keyof typeof CarritosScalarFieldEnum]
