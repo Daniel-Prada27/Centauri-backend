@@ -9,15 +9,16 @@ const authorsRoutes = Router();
 
 authorsRoutes.use(requireLogin);
 
-authorsRoutes.post('', requireEmployee, [
-    body('nombre').notEmpty().withMessage('El nombre es obligatorio')
-], createAuthor);
 
 authorsRoutes.get('', readAuthor);
 authorsRoutes.get('/:id', readAuthorById);
 
-authorsRoutes.put('/:id', updateAuthor);
+authorsRoutes.post('', requireEmployee, [
+    body('nombre').notEmpty().withMessage('El nombre es obligatorio')
+], createAuthor);
 
-authorsRoutes.delete('/:id', deleteAuthor);
+authorsRoutes.put('/:id', requireEmployee, updateAuthor);
+
+authorsRoutes.delete('/:id', requireEmployee, deleteAuthor);
 
 export default authorsRoutes;
