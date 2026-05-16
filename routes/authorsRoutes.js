@@ -1,8 +1,9 @@
 import { Router } from "express";
 import { body } from 'express-validator';
-import { createAuthor, readAuthor, readAuthorById, updateAuthor } from '../controllers/autorsController.js';
+import { createAuthor, readAuthor, readAuthorById, updateAuthor, deleteAuthor } from '../controllers/autorsController.js';
 import { requireLogin } from '../middleware/validateSession.js';
 import { requireEmployee } from "../middleware/employeeValidation.js";
+
 
 const authorsRoutes = Router();
 
@@ -16,5 +17,7 @@ authorsRoutes.get('', readAuthor);
 authorsRoutes.get('/:id', readAuthorById);
 
 authorsRoutes.put('/:id', updateAuthor);
+
+authorsRoutes.delete('/:id', deleteAuthor);
 
 export default authorsRoutes;

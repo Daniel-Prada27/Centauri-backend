@@ -66,3 +66,13 @@ export const updateAuthor = async (id, data) => {
 
     return author;
 }
+
+export const deleteAuthor = async (id) => {
+    const deletedAuthor = await prisma.autores.delete({
+        where: {
+            id: id
+        }
+    })
+
+    return deletedAuthor;
+}
