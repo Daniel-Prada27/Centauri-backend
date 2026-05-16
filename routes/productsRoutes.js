@@ -19,7 +19,7 @@ productsRoutes.post('', [
 
 productsRoutes.get('', readProduct);
 
-productsRoutes.put('', updateProduct);
+productsRoutes.put('/:id', updateProduct);
 
 productsRoutes.delete('/:id', deleteProduct);
 
