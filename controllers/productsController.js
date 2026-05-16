@@ -19,6 +19,16 @@ export const readProduct = async (req, res, next) => {
     }
 }
 
+export const readProductById = async (req, res, next) => {
+    try {
+        const {id} = req.params;
+        const product = await productsService.readProductById(id);
+        res.status(200).json({data: product});
+    } catch (error) {
+        next(error);
+    }
+}
+
 export const updateProduct = async (req, res, next) => {
     try {
         const {id} = req.params;

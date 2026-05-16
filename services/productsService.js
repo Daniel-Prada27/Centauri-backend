@@ -123,6 +123,20 @@ export const readProduct = async ({ nombre, autor, editorial, tipo, categoria })
     return products;
 }
 
+export const readProductById = async (id) => {
+    const product = await prisma.productos.findUnique({
+        where: {id: id},
+                include: {
+            tipo: true,
+            autor: true,
+            editorial: true,
+            categoria: true,
+        }
+    });
+
+    return product;
+}
+
 export const updateProduct = async (id, { nombre, id_autor, existencias, fecha_publicacion, id_editorial, id_tipo, id_categoria }) => {
 
     const updatedProduct = await prisma.productos.update({
