@@ -29,3 +29,13 @@ export const updateProduct = async (req, res, next) => {
         next(error);
     }
 }
+
+export const deleteProduct = async (req, res, next) => {
+    try {
+        const {id} = req.params;
+        const product = await productsService.deleteProduct(id);
+        res.status(200).json({data: product});
+    } catch (error) {
+        next(error);
+    }
+}

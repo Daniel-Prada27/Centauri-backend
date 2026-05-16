@@ -1,6 +1,6 @@
 import {Router} from 'express';
 import {body} from 'express-validator';
-import { createProduct, readProduct, updateProduct } from '../controllers/productsController.js';
+import { createProduct, readProduct, updateProduct, deleteProduct } from '../controllers/productsController.js';
 import { requireLogin } from '../middleware/validateSession.js';
 
 const productsRoutes = Router();
@@ -20,5 +20,7 @@ productsRoutes.post('', [
 productsRoutes.get('', readProduct);
 
 productsRoutes.put('', updateProduct);
+
+productsRoutes.delete('/:id', deleteProduct);
 
 export default productsRoutes;

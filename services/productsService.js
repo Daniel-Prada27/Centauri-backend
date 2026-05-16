@@ -132,3 +132,13 @@ export const updateProduct = async (id, { nombre, id_autor, existencias, fecha_p
 
     return updatedProduct;
 }
+
+export const deleteProduct = async (id) => {
+    const deletedProduct = await prisma.productos.delete({
+        where: {
+            id: id
+        }
+    })
+
+    return deletedProduct;
+}
