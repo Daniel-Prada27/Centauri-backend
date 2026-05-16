@@ -20,7 +20,7 @@ export const createAuthor = async (data) => {
 };
 
 export const readAuthorById = async (data) => {
-    const { id } = data;
+    const id = data;
 
     const author = await prisma.autores.findUnique({
         where: {
