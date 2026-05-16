@@ -2,12 +2,16 @@ import {Router} from 'express';
 import {body} from 'express-validator';
 import { createProduct, readProduct, readProductById, updateProduct, deleteProduct } from '../controllers/productsController.js';
 import { requireLogin } from '../middleware/validateSession.js';
+import { requireEmployee } from '../middleware/employeeValidation.js';
 
 const productsRoutes = Router();
 
 productsRoutes.use(requireLogin);
 
-productsRoutes.post('', [
+productsRoutes.get('', readProduct);
+productsRoutes.get('/:id', readProductById);
+
+productsRoutes.post('', requireEmployee, [
     body('nombre').notEmpty().withMessage('El nombre es obligatorio'),
     body('existencias').isInt({ min: 0 }).withMessage('Las existencias deben ser un número entero mayor o igual a 0'),
     body('fecha_publicacion').isDate().withMessage('La fecha de publicación no es válida'),
@@ -17,11 +21,8 @@ productsRoutes.post('', [
     body('id_categoria').notEmpty().withMessage('La categoría es obligatoria')
 ], createProduct)
 
-productsRoutes.get('', readProduct);
-productsRoutes.get('/:id', readProductById);
+productsRoutes.put('/:id', requireEmployee, updateProduct);
 
-productsRoutes.put('/:id', updateProduct);
-
-productsRoutes.delete('/:id', deleteProduct);
+productsRoutes.delete('/:id', requireEmployee, deleteProduct);
 
 export default productsRoutes;
