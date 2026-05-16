@@ -38,6 +38,60 @@ export const getCartByClientId = async (idCliente) => {
     };
 };
 
+export const addProductToCart = async (idCliente, idProducto) => {
+    if (!idCliente || !idProducto) {
+        throw new AppError('El id del cliente y el id del producto son obligatorios', 400);
+    }
+
+    const cliente = await prisma.clientes.findUnique({
+        where: {
+            id: idCliente
+        }
+    });
+
+    if (!cliente) {
+        throw new AppError('El cliente indicado no existe', 404);
+    }
+
+    const producto = await prisma.productos.findUnique({
+        where: {
+            id: idProducto
+        }
+    });
+
+    if (!producto) {
+        throw new AppError('El producto indicado no existe', 404);
+    }
+
+    const productoEnCarrito = await prisma.carritos.findUnique({
+        where: {
+            id_cliente_id_producto: {
+                id_cliente: idCliente,
+                id_producto: idProducto
+            }
+        }
+    });
+
+    if (productoEnCarrito) {
+        throw new AppError('El producto ya se encuentra en el carrito', 400);
+    }
+
+    const productoAgregado = await prisma.carritos.create({
+        data: {
+            id_cliente: idCliente,
+            id_producto: idProducto
+        },
+        include: {
+            producto: true
+        }
+    });
+
+    return {
+        mensaje: 'Producto agregado al carrito exitosamente',
+        data: productoAgregado
+    };
+};
+
 export const deleteProductFromCart = async (idCliente, idProducto) => {
     if (!idCliente || !idProducto) {
         throw new AppError('El id del cliente y el id del producto son obligatorios', 400);
