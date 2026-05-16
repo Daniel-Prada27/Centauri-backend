@@ -1,6 +1,6 @@
 import { Router } from "express";
 import { body } from 'express-validator';
-import { createAuthor, readAuthor, readAuthorById, updateAuthor, deleteAuthor } from '../controllers/autorsController.js';
+import { createAuthor, readAuthor, readAuthorById, updateAuthor, deleteAuthor } from '../controllers/authorsController.js';
 import { requireLogin } from '../middleware/validateSession.js';
 import { requireEmployee } from "../middleware/employeeValidation.js";
 
