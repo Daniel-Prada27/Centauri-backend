@@ -1,8 +1,10 @@
 import { prisma } from '../prisma.js';
 import { AppError }from '../errors/appError.js';
+import normalize from './normalizeText.js';
 
 export const createAuthor = async (data) => {
-    const {nombre} = data;
+    let {nombre} = data;
+    nombre = normalize(nombre);
 
     if (!nombre) {
         throw new AppError('El nombre es obligatorio', 400);
@@ -30,7 +32,9 @@ export const readAuthorById = async(data) => {
 }
 
 export const readAuthor = async(data) => {
-    const {nombre} = data;
+    let {nombre} = data;
+
+    nombre = normalize(nombre);
 
     if (!nombre) {
         throw new AppError("Debe proveer nombre para buscar autor", 400);
