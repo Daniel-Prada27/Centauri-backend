@@ -1,6 +1,6 @@
 import {Router} from 'express';
 import {body} from 'express-validator';
-import { createProduct, readProduct } from '../controllers/productsController.js';
+import { createProduct, readProduct, updateProduct } from '../controllers/productsController.js';
 import { requireLogin } from '../middleware/validateSession.js';
 
 const productsRoutes = Router();
@@ -18,5 +18,7 @@ productsRoutes.post('', [
 ], createProduct)
 
 productsRoutes.get('', readProduct);
+
+productsRoutes.put('', updateProduct);
 
 export default productsRoutes;

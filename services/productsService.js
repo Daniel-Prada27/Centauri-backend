@@ -122,3 +122,13 @@ export const readProduct = async ({ nombre, autor, editorial, tipo, categoria })
 
     return products;
 }
+
+export const updateProduct = async (id, { nombre, id_autor, existencias, fecha_publicacion, id_editorial, id_tipo, id_categoria }) => {
+
+    const updatedProduct = await prisma.productos.update({
+        where: { id: id },
+        data: { nombre, id_autor, existencias, fecha_publicacion, id_editorial, id_tipo, id_categoria }
+    });
+
+    return updatedProduct;
+}

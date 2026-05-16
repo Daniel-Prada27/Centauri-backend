@@ -18,3 +18,14 @@ export const readProduct = async (req, res, next) => {
         next(error);
     }
 }
+
+export const updateProduct = async (req, res, next) => {
+    try {
+        const id = req.query.id;
+        const { nombre, id_autor, existencias, fecha_publicacion, imagen, id_editorial, id_tipo, id_categoria } = req.body;
+        const product = await productsService.updateProduct(id, { nombre, id_autor, existencias, fecha_publicacion, id_editorial, id_tipo, id_categoria });
+        res.status(200).json({ data: product });
+    } catch (error) {
+        next(error);
+    }
+}
