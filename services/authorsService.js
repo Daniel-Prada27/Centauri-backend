@@ -1,9 +1,9 @@
 import { prisma } from '../prisma.js';
-import { AppError }from '../errors/appError.js';
+import { AppError } from '../errors/appError.js';
 import normalize from './normalizeText.js';
 
 export const createAuthor = async (data) => {
-    let {nombre} = data;
+    let { nombre } = data;
     nombre = normalize(nombre);
 
     if (!nombre) {
@@ -19,8 +19,8 @@ export const createAuthor = async (data) => {
     return author;
 };
 
-export const readAuthorById = async(data) => {
-    const {id} = data;
+export const readAuthorById = async (data) => {
+    const { id } = data;
 
     const author = await prisma.autores.findUnique({
         where: {
@@ -31,8 +31,8 @@ export const readAuthorById = async(data) => {
     return author
 }
 
-export const readAuthor = async(data) => {
-    let {nombre} = data;
+export const readAuthor = async (data) => {
+    let { nombre } = data;
 
     nombre = normalize(nombre);
 
@@ -50,4 +50,19 @@ export const readAuthor = async(data) => {
     })
 
     return author
+}
+
+export const updateAuthor = async (id, data) => {
+    let { nombre } = data;
+    nombre = normalize(nombre);
+
+    const author = await prisma.autores.update({
+        where: {
+            id: id,
+        },
+        data: { nombre }
+    }
+    )
+
+    return author;
 }

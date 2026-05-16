@@ -21,8 +21,20 @@ export const readAuthor = async (req, res, next) => {
 
 export const readAuthorById = async (req, res, next) => {
     try {
-        const id = req.params;
+        const { id } = req.params;
         const author = await autorsService.readAuthorById(id);
+        res.status(200).json({ data: author })
+    } catch (error) {
+        next(error);
+    }
+}
+
+export const updateAuthor = async (req, res, next) => {
+    try {
+        const { id } = req.params;
+        const { nombre } = req.body;
+
+        const author = await autorsService.updateAuthor(id, { nombre });
         res.status(200).json({ data: author })
     } catch (error) {
         next(error);

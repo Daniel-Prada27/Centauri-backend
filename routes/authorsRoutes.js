@@ -1,6 +1,6 @@
 import { Router } from "express";
 import { body } from 'express-validator';
-import { createAuthor, readAuthor, readAuthorById } from '../controllers/autorsController.js';
+import { createAuthor, readAuthor, readAuthorById, updateAuthor } from '../controllers/autorsController.js';
 import { requireLogin } from '../middleware/validateSession.js';
 import { requireEmployee } from "../middleware/employeeValidation.js";
 
@@ -14,5 +14,7 @@ authorsRoutes.post('', requireEmployee, [
 
 authorsRoutes.get('', readAuthor);
 authorsRoutes.get('/:id', readAuthorById);
+
+authorsRoutes.put('/:id', updateAuthor);
 
 export default authorsRoutes;
