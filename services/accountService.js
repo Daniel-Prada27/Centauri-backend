@@ -59,7 +59,7 @@ export const registro = async (data) => {
     const resultado = await prisma.$transaction(async (tx) => {
         const nuevoUsuario = await tx.usuarios.create({
             data: {
-                id: crypto.randomUUID(),
+                // id: crypto.randomUUID(),
                 usuario,
                 clave: claveEncriptada,
                 correo
@@ -68,7 +68,7 @@ export const registro = async (data) => {
 
         const nuevoCliente = await tx.clientes.create({
             data: {
-                id: crypto.randomUUID(),
+                // id: crypto.randomUUID(),
                 id_usuario: nuevoUsuario.id,
                 cedula,
                 nombre,

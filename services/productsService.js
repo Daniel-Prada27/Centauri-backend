@@ -1,5 +1,5 @@
 import { prisma } from '../prisma.js';
-import { AppError }from '../errors/appError.js';
+import { AppError } from '../errors/appError.js';
 
 export const createProduct = async (data) => {
     const {
@@ -74,3 +74,85 @@ export const createProduct = async (data) => {
         data: producto
     };
 };
+
+export const readProduct = async ({ nombre, autor, editorial, tipo, categoria }) => {
+    const where = {
+        ...(nombre && {
+            nombre:
+                { contains: nombre, mode: 'insensitive' }
+        }),
+        ...(autor && {
+            autor: {
+                is:
+                    { nombre: { contains: autor, mode: 'insensitive' } }
+            }
+        }),
+        ...(editorial && {
+            editorial: {
+                is:
+                    { nombre: { contains: editorial, mode: 'insensitive' } }
+            }
+        }),
+        ...(tipo && {
+            tipo: {
+                is:
+                    { nombre: { contains: tipo, mode: 'insensitive' } }
+            }
+        }),
+        ...(categoria && {
+            categoria:
+            {
+                is: {
+                    nombre: { contains: categoria, mode: 'insensitive' }
+                }
+            }
+        }),
+    };
+
+    const products = await prisma.productos.findMany({
+        where,
+        include: {
+            tipo: true,
+            autor: true,
+            editorial: true,
+            categoria: true,
+        }
+    });
+
+
+    return products;
+}
+
+export const readProductById = async (id) => {
+    const product = await prisma.productos.findUnique({
+        where: {id: id},
+                include: {
+            tipo: true,
+            autor: true,
+            editorial: true,
+            categoria: true,
+        }
+    });
+
+    return product;
+}
+
+export const updateProduct = async (id, { nombre, id_autor, existencias, fecha_publicacion, id_editorial, id_tipo, id_categoria }) => {
+
+    const updatedProduct = await prisma.productos.update({
+        where: { id: id },
+        data: { nombre, id_autor, existencias, fecha_publicacion, id_editorial, id_tipo, id_categoria }
+    });
+
+    return updatedProduct;
+}
+
+export const deleteProduct = async (id) => {
+    const deletedProduct = await prisma.productos.delete({
+        where: {
+            id: id
+        }
+    })
+
+    return deletedProduct;
+}
