@@ -6,6 +6,7 @@ import productsRoutes from './routes/productsRoutes.js';
 import authorsRoutes from './routes/authorsRoutes.js';
 import editorialRoutes from './routes/editorialRoutes.js';
 import categoryRoutes from './routes/categoryRoutes.js';
+import typeRoutes from './routes/typeRoutes.js';
 import errorHandler from './middleware/errorHandler.js'
 
 const app = express()
@@ -34,6 +35,8 @@ app.use('/api/authors', authorsRoutes);
 app.use('/api/editorials', editorialRoutes);
 //Category routes
 app.use('/api/categories', categoryRoutes);
+//Type routes
+app.use('/api/types', typeRoutes)
 
 app.use(errorHandler);
 
