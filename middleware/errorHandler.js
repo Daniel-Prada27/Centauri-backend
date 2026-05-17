@@ -1,6 +1,7 @@
 const isNetworkError = (err) =>
   err.code === 'ENETUNREACH' ||
   err.code === 'P1001' ||
+  err.code === 'P1008' ||
   err.message?.includes("Can't reach database")
 
 export const errorHandler = (err, req, res, next) => {
