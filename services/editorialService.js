@@ -19,3 +19,36 @@ export const createEditorial = async (data) => {
 
     return editorial;
 };
+
+export const readEditorialById = async (data) => {
+    const id = data;
+
+    const editorial = await prisma.editoriales.findUnique({
+        where: {
+            id: id
+        }
+    })
+
+    return editorial
+}
+
+export const readEditorial = async (data) => {
+    let { nombre } = data;
+
+    nombre = normalize(nombre);
+
+    if (!nombre) {
+        throw new AppError("Debe proveer nombre para buscar categoria", 400);
+    }
+
+    const editorial = await prisma.editoriales.findMany({
+        where: {
+            nombre: {
+                contains: nombre,
+                mode: 'insensitive'
+            }
+        }
+    })
+
+    return editorial;
+}
