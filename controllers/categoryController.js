@@ -30,3 +30,15 @@ export const readCategoryById = async (req, res, next) => {
         next(error);
     }
 }
+
+export const updateCategory = async (req, res, next) => {
+    try {
+        const { id } = req.params;
+        const { nombre } = req.body;
+
+        const category = await categoryService.updateCategory(id, { nombre });
+        res.status(200).json({ data: category })
+    } catch (error) {
+        next(error);
+    }
+}

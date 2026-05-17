@@ -1,6 +1,6 @@
 import { Router } from "express";
 import { body } from 'express-validator';
-import { createCategory, readCategory, readCategoryById } from '../controllers/categoryController.js';
+import { createCategory, readCategory, readCategoryById, updateCategory } from '../controllers/categoryController.js';
 import { requireLogin } from '../middleware/validateSession.js';
 import { requireEmployee } from "../middleware/employeeValidation.js";
 
@@ -14,5 +14,7 @@ categoryRoutes.get('/:id', readCategoryById);
 categoryRoutes.post('', requireEmployee, [
     body('nombre').notEmpty().withMessage('El nombre es obligatorio')
 ], createCategory);
+
+categoryRoutes.put('/:id', requireEmployee, updateCategory);
 
 export default categoryRoutes;

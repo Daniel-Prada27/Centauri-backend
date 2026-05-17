@@ -50,3 +50,18 @@ export const readCategory = async (data) => {
 
     return category;
 }
+
+export const updateCategory = async (id, data) => {
+    let { nombre } = data;
+    nombre = normalize(nombre);
+
+    const category = await prisma.categorias.update({
+        where: {
+            id: id,
+        },
+        data: { nombre }
+    }
+    )
+
+    return category;
+}
