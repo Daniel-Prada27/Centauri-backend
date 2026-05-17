@@ -41,6 +41,7 @@ model Productos {
   id_editorial      String             @db.Uuid
   id_categoria      String             @db.Uuid
   imagen            String             @default("none") @db.VarChar(200)
+  precio            Float              @default(30000) 
   carrito           Carritos[]
   detallesPedido    Detalles_Pedidos[]
   autor             Autores            @relation(fields: [id_autor], references: [id])
