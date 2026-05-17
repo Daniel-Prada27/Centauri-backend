@@ -36,6 +36,10 @@ app.use('/api/authors', authorsRoutes);
 app.use('/api/editorials', editorialRoutes);
 //Category routes
 app.use('/api/categories', categoryRoutes);
+//Type routes
+app.use('/api/types', typeRoutes);
+//Cart routes
+app.use('/api/cart', cartRoutes);
 
 app.use(errorHandler);
 

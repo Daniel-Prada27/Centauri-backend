@@ -72,8 +72,36 @@ export const addProductToCart = async (idCliente, idProducto) => {
         }
     });
 
+    if (producto.existencias <= 0) {
+        throw new AppError('El producto no tiene existencias disponibles', 400);
+    }
+
     if (productoEnCarrito) {
-        throw new AppError('El producto ya se encuentra en el carrito', 400);
+        if (productoEnCarrito.cantidad >= producto.existencias) {
+            throw new AppError('No hay mas existencias disponibles para este producto', 400);
+        }
+
+        const productoActualizado = await prisma.carritos.update({
+            where: {
+                id_cliente_id_producto: {
+                    id_cliente: idCliente,
+                    id_producto: idProducto
+                }
+            },
+            data: {
+                cantidad: {
+                    increment: 1
+                }
+            },
+            include: {
+                producto: true
+            }
+        });
+
+        return {
+            mensaje: 'Cantidad del producto actualizada exitosamente',
+            data: productoActualizado
+        };
     }
 
     const productoAgregado = await prisma.carritos.create({
@@ -111,6 +139,30 @@ export const deleteProductFromCart = async (idCliente, idProducto) => {
 
     if (!productoEnCarrito) {
         throw new AppError('El producto no se encuentra en el carrito', 404);
+    }
+
+    if (productoEnCarrito.cantidad > 1) {
+        const productoActualizado = await prisma.carritos.update({
+            where: {
+                id_cliente_id_producto: {
+                    id_cliente: idCliente,
+                    id_producto: idProducto
+                }
+            },
+            data: {
+                cantidad: {
+                    decrement: 1
+                }
+            },
+            include: {
+                producto: true
+            }
+        });
+
+        return {
+            mensaje: 'Cantidad del producto actualizada exitosamente',
+            data: productoActualizado
+        };
     }
 
     const productoEliminado = await prisma.carritos.delete({
