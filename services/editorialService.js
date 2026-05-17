@@ -52,3 +52,18 @@ export const readEditorial = async (data) => {
 
     return editorial;
 }
+
+export const updateEditorial = async (id, data) => {
+    let { nombre } = data;
+    nombre = normalize(nombre);
+
+    const editorial = await prisma.editoriales.update({
+        where: {
+            id: id,
+        },
+        data: { nombre }
+    }
+    )
+
+    return editorial;
+}
