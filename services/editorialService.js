@@ -67,3 +67,13 @@ export const updateEditorial = async (id, data) => {
 
     return editorial;
 }
+
+export const deleteEditorial = async (id) => {
+    const deletedEditorial = await prisma.editoriales.delete({
+        where: {
+            id: id
+        }
+    })
+
+    return deletedEditorial;
+}

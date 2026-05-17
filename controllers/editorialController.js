@@ -40,3 +40,13 @@ export const updateEditorial = async (req, res, next) => {
         next(error);
     }
 }
+
+export const deleteEditorial = async (req, res, next) => {
+    try {
+        const {id} = req.params;
+        const editorial = await editorialService.deleteEditorial(id);
+        res.status(200).json({data: editorial});
+    } catch (error) {
+        next(error);
+    }
+}
