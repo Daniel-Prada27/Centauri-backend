@@ -2,7 +2,7 @@ import { Router } from "express";
 import { body } from 'express-validator';
 import { requireLogin } from '../middleware/validateSession.js';
 import { requireEmployee } from "../middleware/employeeValidation.js";
-import { createType, readType, readTypeById, updateType } from "../controllers/typeController.js";
+import { createType, deleteType, readType, readTypeById, updateType } from "../controllers/typeController.js";
 
 const typeRoutes = Router();
 
@@ -16,5 +16,7 @@ typeRoutes.post('', requireEmployee, [
 ], createType);
 
 typeRoutes.put('/:id', requireEmployee, updateType);
+
+typeRoutes.delete('/:id', requireEmployee, deleteType);
 
 export default typeRoutes;

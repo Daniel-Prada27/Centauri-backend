@@ -67,3 +67,13 @@ export const updateType = async (id, data) => {
 
     return type;
 }
+
+export const deleteType = async (id) => {
+    const deletedType = await prisma.tipos.delete({
+        where: {
+            id: id
+        }
+    })
+
+    return deletedType;
+}
