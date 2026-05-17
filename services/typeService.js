@@ -52,3 +52,18 @@ export const readType = async (data) => {
 
     return type;
 }
+
+export const updateType = async (id, data) => {
+    let { nombre } = data;
+    nombre = normalize(nombre);
+
+    const type = await prisma.tipos.update({
+        where: {
+            id: id,
+        },
+        data: { nombre }
+    }
+    )
+
+    return type;
+}
