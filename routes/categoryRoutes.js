@@ -1,6 +1,6 @@
 import { Router } from "express";
 import { body } from 'express-validator';
-import { createCategory, readCategory, readCategoryById, updateCategory } from '../controllers/categoryController.js';
+import { createCategory, deleteCategory, readCategory, readCategoryById, updateCategory } from '../controllers/categoryController.js';
 import { requireLogin } from '../middleware/validateSession.js';
 import { requireEmployee } from "../middleware/employeeValidation.js";
 
@@ -16,5 +16,8 @@ categoryRoutes.post('', requireEmployee, [
 ], createCategory);
 
 categoryRoutes.put('/:id', requireEmployee, updateCategory);
+
+categoryRoutes.delete('/:id', requireEmployee, deleteCategory);
+
 
 export default categoryRoutes;
