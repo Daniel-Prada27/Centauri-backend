@@ -19,3 +19,36 @@ export const createType = async (data) => {
 
     return type;
 };
+
+export const readTypeById = async (data) => {
+    const id = data;
+
+    const type = await prisma.tipos.findUnique({
+        where: {
+            id: id
+        }
+    })
+
+    return type
+}
+
+export const readType = async (data) => {
+    let { nombre } = data;
+
+    nombre = normalize(nombre);
+
+    if (!nombre) {
+        throw new AppError("Debe proveer nombre para buscar categoria", 400);
+    }
+
+    const type = await prisma.tipos.findMany({
+        where: {
+            nombre: {
+                contains: nombre,
+                mode: 'insensitive'
+            }
+        }
+    })
+
+    return type;
+}
