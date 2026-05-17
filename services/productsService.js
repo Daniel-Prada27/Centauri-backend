@@ -1,8 +1,9 @@
 import { prisma } from '../prisma.js';
 import { AppError } from '../errors/appError.js';
+import normalize from './normalizeText.js';
 
 export const createProduct = async (data) => {
-    const {
+    let {
         nombre,
         existencias,
         fecha_publicacion,
@@ -50,6 +51,8 @@ export const createProduct = async (data) => {
     if (!categoria) {
         throw new AppError('La categoria indicada no existe', 404);
     }
+
+    nombre = normalize(nombre);
 
     const producto = await prisma.productos.create({
         data: {
