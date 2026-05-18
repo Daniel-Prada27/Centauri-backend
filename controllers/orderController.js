@@ -1,8 +1,12 @@
-import { AppError } from "../errors/appError.js";
+import * as orderService from "../services/orderService.js";
 
 export const createOrder = async (req, res, next) => {
     try {
-        throw new AppError('Endpoint de pedidos no implementado', 501);
+        const idCliente = req.session.user.id_cliente;
+        const { idEmpleado } = req.body;
+
+        const order = await orderService.createOrder(idCliente, idEmpleado);
+        res.status(201).json(order);
     } catch (error) {
         next(error);
     }
