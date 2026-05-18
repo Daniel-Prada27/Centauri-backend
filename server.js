@@ -6,6 +6,7 @@ import productsRoutes from './routes/productsRoutes.js';
 import authorsRoutes from './routes/authorsRoutes.js';
 import editorialRoutes from './routes/editorialRoutes.js';
 import categoryRoutes from './routes/categoryRoutes.js';
+import orderRoutes from './routes/orderRoutes.js';
 import typeRoutes from './routes/typeRoutes.js';
 import cartRoutes from './routes/cartRoutes.js';
 import errorHandler from './middleware/errorHandler.js'
@@ -40,6 +41,8 @@ app.use('/api/categories', categoryRoutes);
 app.use('/api/types', typeRoutes);
 //Cart routes
 app.use('/api/cart', cartRoutes);
+//order Routes
+app.use('/api/orders', orderRoutes);
 
 app.use(errorHandler);
 
