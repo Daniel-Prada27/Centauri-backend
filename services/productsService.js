@@ -80,6 +80,13 @@ export const createProduct = async (data, imagePath = null) => {
 };
 
 export const readProduct = async ({ nombre, autor, editorial, tipo, categoria }) => {
+
+    nombre = normalize(nombre);
+    autor = normalize(autor);
+    editorial = normalize(editorial);
+    tipo = normalize(tipo);
+    categoria = normalize(categoria);
+
     const where = {
         ...(nombre && {
             nombre:
