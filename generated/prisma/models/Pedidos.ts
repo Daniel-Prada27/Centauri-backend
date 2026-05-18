@@ -553,14 +553,6 @@ export type PedidosUncheckedUpdateManyWithoutEstadoNestedInput = {
   deleteMany?: Prisma.PedidosScalarWhereInput | Prisma.PedidosScalarWhereInput[]
 }
 
-export type FloatFieldUpdateOperationsInput = {
-  set?: number
-  increment?: number
-  decrement?: number
-  multiply?: number
-  divide?: number
-}
-
 export type PedidosCreateNestedOneWithoutDetallesInput = {
   create?: Prisma.XOR<Prisma.PedidosCreateWithoutDetallesInput, Prisma.PedidosUncheckedCreateWithoutDetallesInput>
   connectOrCreate?: Prisma.PedidosCreateOrConnectWithoutDetallesInput

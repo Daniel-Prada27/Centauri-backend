@@ -122,7 +122,8 @@ export const ProductosScalarFieldEnum = {
   id_autor: 'id_autor',
   id_editorial: 'id_editorial',
   id_categoria: 'id_categoria',
-  imagen: 'imagen'
+  imagen: 'imagen',
+  precio: 'precio'
 } as const
 
 export type ProductosScalarFieldEnum = (typeof ProductosScalarFieldEnum)[keyof typeof ProductosScalarFieldEnum]
