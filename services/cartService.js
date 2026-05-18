@@ -34,7 +34,7 @@ export const getCartByClientId = async (idCliente) => {
 
     return {
         mensaje: 'Carrito obtenido exitosamente',
-        data: carrito
+        data: [carrito]
     };
 };
 
