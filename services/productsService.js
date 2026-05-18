@@ -2,7 +2,7 @@ import { prisma } from '../prisma.js';
 import { AppError } from '../errors/appError.js';
 import normalize from './normalizeText.js';
 
-export const createProduct = async (data) => {
+export const createProduct = async (data, imagePath = null) => {
     let {
         nombre,
         existencias,
@@ -62,7 +62,8 @@ export const createProduct = async (data) => {
             id_tipo,
             id_autor,
             id_editorial,
-            id_categoria
+            id_categoria,
+            imagen: imagePath
         },
         include: {
             tipo: true,
